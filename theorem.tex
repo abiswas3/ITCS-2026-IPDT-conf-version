@@ -1,0 +1,139 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Theorem
+% Define a new theorem style
+\newtheoremstyle{theoremstyle}
+  {\topsep} % Space above
+  {\topsep} % Space below
+  {} % Body font
+  {} % Indent amount
+  {\bfseries\color{black}} % Theorem head font
+  {} % Punctuation after theorem head
+  {.5em} % Space after theorem head
+  {\thmname{#1}~\thmnumber{#2}:~\textcolor{black}{\thmnote{[#3]}}} % Theorem head spec (can be left empty, meaning ‘normal’)
+
+% Define mdframed settings for the lemma box
+\mdfdefinestyle{theoremframe}{
+  linecolor=theoremcolor!80,
+  linewidth=2pt,
+  backgroundcolor=theoremcolor!15,
+  roundcorner=5pt,
+  nobreak=true,
+  topline=false,
+  bottomline=false,
+  rightline=false,
+}
+% Apply the custom theorem style
+\theoremstyle{theoremstyle}
+% Define a theorem environment
+\newtheorem{theorem}{Theorem}[section]
+% Automatically surround lemma with mdframed
+\surroundwithmdframed[style=theoremframe]{theorem}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Remark
+\newtheoremstyle{remarkstyle}
+  {\topsep} % Space above
+  {\topsep} % Space below
+  {} % Body font
+  {} % Indent amount
+  {\bfseries\color{black}} % Theorem head font
+  {} % Punctuation after theorem head
+  {0.5em} % Space after theorem head
+  {} % Theorem head spec (can be left empty, meaning ‘normal’)
+
+% Define mdframed settings for the lemma box
+\mdfdefinestyle{remarkframe}{
+  linecolor=momiji!80,
+  linewidth=2pt,
+  backgroundcolor=momiji!10,
+  roundcorner=5pt,
+  nobreak=true,
+  topline=false,
+  bottomline=false,
+  rightline=false,
+}
+% Apply the custom theorem style
+\theoremstyle{remarkstyle}
+\newtheorem{remark}{Remark}
+\surroundwithmdframed[style=remarkframe]{remark}
+
+% Definitions
+\newtheoremstyle{definitionstyle}
+  {\topsep} % Space above
+  {\topsep} % Space below
+  {} % Body font
+  {} % Indent amount
+  {\bfseries\color{black}} % Theorem head font
+  {} % Punctuation after theorem head
+  {.5em} % Space after theorem head
+  {\thmname{#1}~\thmnumber{#2}:~\textcolor{black}{\thmnote{[#3]}}} % Theorem head spec (can be left empty, meaning ‘normal’)
+
+% Define mdframed settings for the lemma box
+\mdfdefinestyle{definitionframe}{
+  linecolor=definitioncolor!80,
+  linewidth=2pt,
+  backgroundcolor=definitioncolor!45,
+  roundcorner=5pt,
+  nobreak=true,
+  topline=false,
+  bottomline=false,
+  rightline=false,
+}
+\theoremstyle{definitionstyle}
+\newtheorem{definition}[theorem]{Definition}
+\surroundwithmdframed[style=definitionframe]{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Lemma
+% Define a new theorem style
+\newtheoremstyle{lemmastyle}
+  {\topsep} % Space above
+  {\topsep} % Space below
+  {} % Body font
+  {} % Indent amount
+  {\bfseries\color{black}} % Theorem head font
+  {} % Punctuation after theorem head
+  {.5em} % Space after theorem head
+  {\thmname{#1}~\thmnumber{#2}:~\textcolor{black}{\thmnote{[#3]}}} % Theorem head spec (can be left empty, meaning ‘normal’)
+
+% Define mdframed settings for the lemma box
+\mdfdefinestyle{lemmaframe}{
+  linecolor=theoremcolor!80,
+  linewidth=2pt,
+  backgroundcolor=theoremcolor!05,
+  roundcorner=5pt,
+  nobreak=true,
+  topline=false,
+  bottomline=false,
+  rightline=false,
+}
+% Apply the custom theorem style
+\theoremstyle{lemmastyle}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+% Automatically surround lemma with mdframed
+\surroundwithmdframed[style=lemmaframe]{lemma}
+\surroundwithmdframed[style=lemmaframe]{corollary}
+\newtheorem{claim}[theorem]{Claim}
+% Automatically surround lemma with mdframed
+\surroundwithmdframed[style=definitionframe]{claim}
+
+% Define custom environments for Question and Open Problem
+% \newenvironment{question}
+%   {\reversemarginpar
+%    \marginnote{\textbf{\textcolor{fuyu-gaki}{Question:}}}}
+%  {}
+
+\newtcolorbox[auto counter, number within=section]{problem}[2][]{colframe=fuyu-gaki, colback=mizu!10, coltitle=white, title={Problem }, sharp corners, boxrule=0.8mm, width=0.99\textwidth, boxsep=2mm, left=3mm, right=3mm, top=2mm, bottom=2mm, breakable}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\goal}[1]{
+\begin{tcolorbox}[colframe=red!50!black, colback=white!95!black,title=Goal]
+#1
+\end{tcolorbox}    
+}
+
+\newtcolorbox[auto counter, number within=section]{question}[2][]{colframe=fuyu-gaki, colback=mizu!10, coltitle=white, title={Open Question \thetcbcounter: #2}, sharp corners, boxrule=0.8mm, width=0.99\textwidth, boxsep=2mm, left=3mm, right=3mm, top=2mm, bottom=2mm, breakable}
