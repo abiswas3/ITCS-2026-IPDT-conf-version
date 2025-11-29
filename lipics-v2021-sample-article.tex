@@ -1,5 +1,5 @@
 
-\documentclass[a4paper,UKenglish,cleveref, autoref, thm-restate]{lipics-v2021}
+\documentclass[a4paper,UKenglish,cleveref, autoref, thm-restate, numberwithinsect]{lipics-v2021}
 %This is a template for producing LIPIcs articles. 
 %See lipics-v2021-authors-guidelines.pdf for further information.
 %for A4 paper format use option "a4paper", for US-letter use option "letterpaper"
@@ -11,7 +11,6 @@
 %for enabling thm-restate support, use "thm-restate"
 %for enabling a two-column layout for the author/affilation part (only applicable for > 6 authors), use "authorcolumns"
 %for producing a PDF according the PDF/A standard, add "pdfa"
-% \input{base_template}
 \usepackage{natbib}
 \usepackage{booktabs}
 \usepackage{framed}
@@ -36,17 +35,18 @@
 
 %\titlerunning{Dummy short title} %TODO optional, please use if title is longer than one line
 
-\author{Ari Biswas}{University Of Warwick, United Kingdom  \and \url{https://randomwalks.xyz} }{tcs@randomwalks.xyz}{https://orcid.org/0000-0001-6412-844X}{}%TODO mandatory, please use full name; only 1 author per \author macro; first two parameters are mandatory, other parameters can be empty. Please provide at least the name of the affiliation and the country. The full address is optional. Use additional curly braces to indicate the correct name splitting when the last name consists of multiple name parts.
+\author{Ari Biswas}{University Of Warwick, United Kingdom  \and \url{https://randomwalks.xyz}}{tcs@randomwalks.xyz}{https://orcid.org/0000-0001-6412-844X}{}
+%TODO mandatory, please use full name; only 1 author per \author macro; first two parameters are mandatory, other parameters can be empty. Please provide at least the name of the affiliation and the country. The full address is optional. Use additional curly braces to indicate the correct name splitting when the last name consists of multiple name parts.
 
-\author{Mark Bun\footnote{Optional footnote, e.g. to mark corresponding author}}{Boston University}{mbun@bu.edu}{[orcid]}{[funding]}
+\author{Mark Bun\footnote{Optional footnote, e.g. to mark corresponding author}}{Boston University, USA \and \url{https://cs-people.bu.edu/mbun/}}{mbun@bu.edu}{[orcid]}{[funding]}
 
-\author{Cl\'ement Canonne\footnote{Optional footnote, e.g. to mark corresponding author}}{University of Sydney}{clement.canonne@sydney.edu.au}{[orcid]}{[funding]}
+\author{Cl\'ement Canonne\footnote{Optional footnote, e.g. to mark corresponding author}}{University of Sydney, Australia \and \url{https://ccanonne.github.io}}{clement.canonne@sydney.edu.au}{[orcid]}{[funding]}
 
-\author{Satchit Sivakumar\footnote{Optional footnote, e.g. to mark corresponding author}}{Boston University}{satchit.sivakumar@gmail.com}{[orcid]}{[funding]}
+\author{Satchit Sivakumar\footnote{Optional footnote, e.g. to mark corresponding author}}{Boston University, USA \and \url{https://sites.google.com/view/satchit/home?pli=1}}{satchit.sivakumar@gmail.com}{[orcid]}{[funding]}
 
 \authorrunning{A Biswas, M Bun, C Cannone, S Sivakumar} %TODO mandatory. First: Use abbreviated first/middle names. Second (only in severe cases): Use first author plus 'et al.'
 
-\Copyright{Jane Open Access and Joan R. Public} %TODO mandatory, please use full first names. LIPIcs license is "CC-BY";  http://creativecommons.org/licenses/by/3.0/
+\Copyright{Ari Biswas, Mark Bun, Cl\'ement Cannone and  Satchit Sivakumar} %TODO mandatory, please use full first names. LIPIcs license is "CC-BY";  http://creativecommons.org/licenses/by/3.0/
 
 % \ccsdesc[100]{\textcolor{red}{Replace ccsdesc macro with valid one}} %TODO mandatory: Please choose ACM 2012 classifications from https://dl.acm.org/ccs/ccs_flat.cfm 
 \begin{CCSXML}
@@ -64,15 +64,17 @@
 
 \category{} %optional, e.g. invited paper
 
-\relatedversion{} %optional, e.g. full version hosted on arXiv, HAL, or other respository/website
-%\relatedversiondetails[linktext={opt. text shown instead of the URL}, cite=DBLP:books/mk/GrayR93]{Classification (e.g. Full Version, Extended Version, Previous Version}{URL to related version} %linktext and cite are optional
+% TODO: add full version
+\relatedversion{Full Version} %optional, e.g. full version hosted on arXiv, HAL, or other respository/website
+\relatedversiondetails[linktext={opt. text shown instead of the URL}, cite=DBLP:books/mk/GrayR93]{Full Version}{URL to related version} %linktext and cite are optional
 
 %\supplement{}%optional, e.g. related research data, source code, ... hosted on a repository like zenodo, figshare, GitHub, ...
 %\supplementdetails[linktext={opt. text shown instead of the URL}, cite=DBLP:books/mk/GrayR93, subcategory={Description, Subcategory}, swhid={Software Heritage Identifier}]{General Classification (e.g. Software, Dataset, Model, ...)}{URL to related version} %linktext, cite, and subcategory are optional
 
 %\funding{(Optional) general funding statement \dots}%optional, to capture a funding statement, which applies to all authors. Please enter author specific funding statements as fifth argument of the \author macro.
 
-\acknowledgements{I want to thank \dots}%optional
+%optional
+% \acknowledgements{}
 
 %\nolinenumbers %uncomment to disable line numbering
 
@@ -100,7 +102,7 @@ We revisit the framework of interactive proofs for distribution testing, first i
 In this model, a data-poor verifier  determines whether a probability distribution has a property of interest by interacting with an all-powerful, data-rich but untrusted prover bent on convincing them that it has the property. While prior work gave sample-, time-, and communication-efficient protocols for testing and estimating a range of distribution properties, they all suffer from an inherent issue: for most interesting properties of distributions over a domain of size $N$, the verifier must draw at least $\Omega(\sqrt{N})$ samples of its own. While sublinear in $N$, this is still prohibitive for large domains encountered in practice.
 
 In this work, we circumvent this limitation by augmenting the verifier with the ability to perform an exponentially smaller number of more powerful (but reasonable) \emph{pairwise conditional} queries, effectively enabling them to perform ``local comparison checks'' of the prover's claims.
-We systematically investigate the landscape of interactive proofs in this new setting, giving polylogarithmic query and sample protocols for (tolerantly) testing all \emph{label-invariant} properties, thus demonstrating exponential savings without compromising on communication, for this large and fundamental class of testing tasks.
+We systematically investigate the landscape of interactive proofs in this new setting, giving poly-logarithmic query and sample protocols for (tolerantly) testing all \emph{label-invariant} properties, thus demonstrating exponential savings without compromising on communication, for this large and fundamental class of testing tasks.
 \end{abstract}
 
 \section{Introduction}\label{sec:intro}
@@ -444,104 +446,6 @@ So for any $z \in [0,1]$ it can belong to exactly \emph{one} bucket. This allows
 \]
 
 \end{definition}
-
-Figure \ref{fig:approximate-hist-schematic} illustrates how the $(\DomainSize, \Proximity)$ bucketing of the domain a distribution induces an approximate histogram.
-Observe in that above definition, the domain of $h_\Dist^{(\Proximity)}$ has at most $\NumBuckets + 1$ values i.e. we have discretised the true histogram into $\NumBuckets +1$ values. 
-Thus, the above histogram can be succinctly represented with the following collection of items: $\TrueHist$, where for all $j \in \BucketIndices$
-  \[ 
-    \True{p_j} \Def \TrueDist{B_j^{(\Dist, \Proximity)}} \Def \sum_{x \in B_j^{(\Dist, \Proximity)}} \TrueDist{x} 
-  \]
-
-\begin{figure}[h]
-\centering
-\fcolorbox{gray!30}{white}{%
-\begin{minipage}{0.95\textwidth}
-\centering
-\begin{tikzpicture}[scale=1.0]
-\pgfmathsetmacro{\one}{0.8}
-\pgfmathsetmacro{\bucketlabels}{0.8}
-\pgfmathsetmacro{\intervaly}{-0.02}
-\pgfmathsetmacro{\buckety}{-0.2}
-% =========================
-% Axes
-% =========================
-\draw[->] (0,0) -- (10,0) node[right] {$[0,1]$};
-\draw[->] (0,0) -- (0,4) node[above] {$h_\Dist^{(\Proximity)}(z)$};
-% =========================
-% Bucket divisions on x-axis
-% =========================
-% \draw[dashed] (1,0) -- (1,3.5);
-% \draw[dashed] (2.5,0) -- (2.5,3.5);
-% \draw[dashed] (4.5,0) -- (4.5,3.5);
-% \draw[dashed] (7,0) -- (7,3.5);
-% x-axis labels
-\node[below, gray] at (0,\intervaly) {\scriptsize $0$};
-\node[below, gray] at (\one,\intervaly) {\scriptsize $\frac{\Proximity}{\DomainSize}$};
-\node[below, gray] at (2.5,\intervaly) {\scriptsize $\frac{\Proximity(\Proximity+1)}{\DomainSize}$};
-\node[below, gray] at (4.5,\intervaly) {\scriptsize $\frac{\Proximity(\Proximity+1)^2}{\DomainSize}$};
-\node[below, gray] at (5, 1) {$\cdots$};
-\node[below, gray] at (6,\intervaly) {\scriptsize $\frac{\Proximity(\Proximity+1)^{i-1}}{\DomainSize}$};
-\node[below] at (8, 1) {$\cdots$};
-\node[below, gray] at (10,-0.1) {\scriptsize $1$};
-% x-axis ticks
-\draw (0,-0.05) -- (0,0.05);
-\draw (1,-0.05) -- (1,0.05);
-\draw (2.5,-0.05) -- (2.5,0.05);
-\draw (4.5,-0.05) -- (4.5,0.05);
-\draw (10,-0.05) -- (10,0.05);
-% =========================
-% Histogram bars (representing aggregated p_j)
-% =========================
-\draw[fill=blue!20, draw=black, thick] (0,0) rectangle (\one,1.5);
-\draw[fill=green!20, draw=black, thick] (\one,0) rectangle (2.5,2.8);
-\draw[fill=orange!20, draw=black, thick] (2.5,0) rectangle (4.5,2.2);
-\draw[fill=purple!20, draw=black, thick] (6,0) rectangle (8.5,1.2);
-% \draw[fill=gray!15, draw=black, thick] (9,0) rectangle (10,0.7);
-% =========================
-% Bucket labels inside bars
-% =========================
-\node at ({\one/2},0.75) {$\True{p_0}$};
-\node at (1.75,1.4) {$\True{p_1}$};
-\node at (3.5,1.1) {$\True{p_2}$};
-\node at (7.3,0.6) {$\True{p_i}$};
-% \node at (9.5,0.35) {$\True{p_L}$};
-\node[below=5pt, scale=\bucketlabels] at ({\one/2},\buckety) {$B_0$};
-\node[below=5pt, scale=\bucketlabels] at (1.75,\buckety) {$B_1$};
-\node[below=5pt, scale=\bucketlabels] at (3.5,\buckety) {$B_2$};
-\node[below=5pt, scale=\bucketlabels] at (7.3,\buckety) {$B_i$};
-% \node[below=5pt] at (9.5,-0.1) {$B_L$};
-% =========================
-% Domain elements marked on x-axis (placed after bars to appear on top)
-% =========================
-\fill[blue] (0.3,0) circle (2.5pt);
-% \node[above, blue] at (0.3,0.15) {\small $x_1$};
-\fill[blue] (0.7,0) circle (2.5pt);
-% \node[above, blue] at (0.7,0.15) {\small $x_2$};
-\fill[blue] (1.3,0) circle (2.5pt);
-% \node[above, blue] at (1.3,0.15) {\small $x_3$};
-\fill[blue] (2.1,0) circle (2.5pt);
-% \node[above, blue] at (2.1,0.15) {\small $x_6$};
-\fill[blue] (3.0,0) circle (2.5pt);
-% \node[above, blue] at (3.0,0.15) {\small $x_5$};
-\fill[blue] (4.0,0) circle (2.5pt);
-% \node[above, blue] at (4.0,0.15) {\small $x_4$};
-\fill[blue] (5.2,0) circle (2.5pt);
-\fill[blue] (6.0,0) circle (2.5pt);
-\fill[blue] (6.6,0) circle (2.5pt);
-% \node[above, blue] at (5.9,0.15) {\small $\cdots$};
-\fill[blue] (9.0,0) circle (2.5pt);
-\end{tikzpicture}
-\vspace{0.5em}
-\end{minipage}%
-}
-\caption{ The approximate histogram $h_\Dist^{(\Proximity)}$ induced by a $(\DomainSize, \Proximity)$-partitioning of $\Domain$ according to $\Dist$.
-The blue dots denote domain elements $x \in \Domain$ positioned on the interval $[0,1]$ according their probability mass $\TrueDist{x}$.
-Buckets $(B_1, \ldots, B_L)$ denote a disjoint $\Proximity$-partitioning of domain, where $B_i$ is the set of domain elements $x$, such that $\TrueDist{x} \in \left(\frac{\Proximity(1+\Proximity)^{i-1}}{\DomainSize},\,\frac{\Proximity(1+\Proximity)^{i}}{\DomainSize}\right]$.
-The mass of bucket $i$ is denoted with $\True{p_i} = \sum_{x \in B_i} \TrueDist{x}$.}
-\label{fig:approximate-hist-schematic}
-\end{figure}
-
-
 
 
 In the rest of the document, we use this succinct notation to represent approximate histograms of a distribution.
