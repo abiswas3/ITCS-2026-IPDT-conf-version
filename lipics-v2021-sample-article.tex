@@ -1,5 +1,7 @@
 
 \documentclass[a4paper,UKenglish,cleveref, autoref, thm-restate, numberwithinsect]{lipics-v2021}
+\nolinenumbers
+
 %This is a template for producing LIPIcs articles. 
 %See lipics-v2021-authors-guidelines.pdf for further information.
 %for A4 paper format use option "a4paper", for US-letter use option "letterpaper"
@@ -123,15 +125,15 @@ While this model of verifiable computation has only recently been explored in th
 It models settings where a centralized organization (for example, a company turning billions of dollars of profit) has the ability to collect large amounts of data and learn distributions to high precision, while end-users may not have the same ability. 
 At the same time, the company might have incentives to lie, and so verifying whether the company is being truthful is important in this setting.
 % This line of work shows that for broad classes of properties, verifying properties is indeed more sample-efficient than testing them. 
-The work of \citet{chiesa2018proofs} shows that the verification of \emph{any} distribution property over domain $\Domain$ can be reduced to identity testing\footnote{Identity testing refers to the task of testing if a distribution is exactly equal to a pre-specified reference distribution or is $\Proximity$-far from it.}, with communication \emph{superlinear} in the domain size. 
+The work of \citet{chiesa2018proofs} shows that the verification of \emph{any} distribution property over domain $\Domain$ can be reduced to identity testing\footnote{Identity testing refers to the task of testing distinguishing between distributions that are  exactly equal to a pre-specified reference distribution from distributions $\Proximity$-far from in total variation distance.}, with communication \emph{superlinear} in the domain size. 
 Follow up work \citep{herman2022verifying, herman2023doubley} recovers this result for the broad class of \emph{label-invariant properties}, while only requiring communication \emph{sub-linear} in the domain size.
 More specifically, the work of \citet{herman2022verifying, herman2023doubley} show that for label-invariant properties, verification requires only $\BigO{\sqrt{\DomainSize}}$ samples and $\BigOTilde{\sqrt{\DomainSize}}$ communication, even though, as mentioned earlier, testing some properties in this class could require $\Theta(N/\log N)$ samples. 
-Here, a property is \emph{label-invariant} (also known as \emph{symmetric}) if the names of the elements themselves are not significant to the decision outcome (see Definition \ref{defn:label-invariant-prop}). 
+Here, a property is \emph{label-invariant} (also known as \emph{symmetric}) if the names of the elements themselves are not significant to the decision outcome. 
 % More formally, a property $\Property$ of distributions over domain $\mathcal{X}$ is label-invariant if, whenever distribution $\Dist$ satisfies $\Property$, then so does every distribution $\Dist_\pi$ obtained by re-labelling domain elements in $\mathcal{X}$ with a permutation $\pi\colon \mathcal{X} \rightarrow \mathcal{X}$. 
 Testing if a distribution is uniform over its support (also known as generalized uniformity testing) is an example of a label-invariant property. 
 
 Unfortunately, while a significant improvement over unaided testing, requiring $\BigO{\sqrt{\DomainSize}}$ samples from the verifier can still be prohibitive when considering massive domains. 
-Further, there is a matching sample complexity lower bound -- verification of even basic label-invariant properties such as checking if a distribution is uniform over its entire domain requires $\Omega(\sqrt{N})$ samples. 
+Further, there is a matching sample complexity lower bound -- verification of even basic label-invariant properties such as checking if a distribution is uniform over its entire domain requires $\Omega(\sqrt{N})$ samples\footnote{This lower bound applies to any property that is a singleton set.}. 
 To summarise: For most properties, with access to \emph{only} samples from a distribution, it is impossible for any tester to do better than drawing $\BigOmega{\sqrt{\DomainSize}}$ samples, with or without the help of a prover.
 %More formally, given a distribution $D$ over a domain $[N]$ with a property $P$, it is label-invariant, if for any permutation $\pi: [N] \to [N]$, the distribution $D_{\pi}$ where $D_{\pi}(x) = D(\pi(x))$ has the property $P$. 
 %Label-invariant properties include tolerant uniformity testing, entropy testing, support size testing etc. 
@@ -189,7 +191,7 @@ Specifically, we show that a simple variant of the support size distinguishing p
 Thus, unaided, there exist (label-invariant) properties for which the $\PCond$ oracle is not much better than just sample access. 
 % Specifically, the property is the set of distributions with support size $\sqrt{N}$.
 
-\begin{theorem}[Informal Version of \Cref{cor:lowerbound}]\label{thm:informallb}
+\begin{theorem}[Informal Version]\label{thm:informallb}
 
   There exists a label-invariant property $\Property$ such that every tester with access to a $\PCond$ oracle for $\Property$ with proximity parameter  $\Proximity \leq 1/2$ and failure probability  $0.01$ must make $\BigOmega{\DomainSize^{1/3}}$ queries.
 \end{theorem}
@@ -259,9 +261,9 @@ The complexity of the verifier is as follows:
 In this section, we give an overview of our protocol for verifying label-invariant properties.
 
 \paragraph*{Unlabelled Bucket Histogram:} There is now a long line of work on the testing and verification of label-invariant properties \citep{BatuFRSW00, valiantthesis, chakraborty2013power, herman2022verifying, herman2023doubley}, and a key object used in this work is the unlabelled \emph{approximate} $\Proximity$-bucket histogram of a distribution. 
-Bucketing corresponds to partitioning the interval $[0,1]$ into smaller multiplicative probability intervals (see Definition \ref{defn:bucketting-or-partition}). 
+Bucketing corresponds to partitioning the interval $[0,1]$ into smaller multiplicative probability intervals. 
 The $\Proximity$-bucket histogram divides the interval $[0,1]$ into $\BigOTilde{\log \DomainSize /\Proximity}$ buckets where the $\ell$\textsuperscript{th} bucket is a set of domain elements with individual probability mass in the range $(\Proximity(1+\Proximity)^{\ell} / N, \Proximity(1+\Proximity)^{\ell+1} / N]$. 
-The \emph{approximate} unlabelled bucket histogram of a distribution then corresponds to a list of $\tilde{O}(\log N / \Proximity)$ fractions, where the $\ell$\textsuperscript{th} element of the list is the fraction of domain points whose probability lies in the range specified by the $\ell$\textsuperscript{th} bucket (see Definition \ref{defn:approx-hist}).
+The \emph{approximate} unlabelled bucket histogram of a distribution then corresponds to a list of $\tilde{O}(\log N / \Proximity)$ fractions, where the $\ell$\textsuperscript{th} element of the list is the fraction of domain points whose probability lies in the range specified by the $\ell$\textsuperscript{th} bucket.
 It is well known (see \citep{valiantthesis}) that the \emph{approximate} unlabelled $\Proximity$-bucket histogram of a distribution is a sufficient statistic to (tolerantly) test any label-invariant property with proximity parameter(s) $\BigO{\Proximity}$. 
 Thus, similar to prior work \citep{herman2022verifying, herman2023doubley, herman2024public}, our protocol also focuses on efficiently verifying an unlabelled $\Proximity$-bucket histogram given to us by the prover.
 
@@ -272,12 +274,11 @@ However, sampling from this bucket distribution is non-trivial since a sample fr
 While sampling from the bucket distribution might be hard with $\Samp$ access to the distribution, one might be more optimistic about the possibility of sampling from the $\Proximity$-approximate histogram with $\PCond$ queries. 
 In particular, one approach that we might take is the following: the verifier draws a dataset of size $\tilde{O}(\log N/\Proximity^2)$ (enough to learn the histogram), and sends these samples to the prover, who responds with the bucket index of each sample.
 From how a $\Proximity$-histogram is defined, if $x$ and $y$ belong to buckets $i$ and $j$ respectively, then this implies that the ratio of the probability masses of $x$ and $y$ under $\Dist$ is guaranteed to be in the interval $\left[\frac{1}{(1+\Proximity)^{|j-i|}}, (1 + \Proximity)^{|j-i|}\right]$.
-As $\PCond$ access allows us to conditionally sample from a set restricted to two domain elements, it allows us to approximately learn the ratio of their probability masses up to a multiplicative constant (see Lemma \ref{lemma:pcond-empirical-guarantee}).
+As $\PCond$ access allows us to conditionally sample from a set restricted to two domain elements, it allows us to approximately learn the ratio of their probability masses up to a multiplicative constant.
 Equipped with this power, for each pair $x \neq y$ from the set of drawn samples, the verifier uses the $\PCond$ oracle to check if the learned ratios align with the provers claims.
 If the prover were to lie significantly, then for at least one pair of samples, the claimed ratio would significantly different from the learned ratio.
 Unfortunately, this simplistic strategy comes with two pitfalls. 
-Firstly, assuming the above strategy was sound, naively comparing elements with arbitrary bucket indices could require $\BigOmega{\DomainSize}$ $\PCond$ queries if the elements being compared had significantly different probability masses
-(see the \nameref{lemma:pcond-empirical-guarantee}, wherein $K$ could be as large as $\DomainSize$).
+Firstly, assuming the above strategy was sound, naively comparing elements with arbitrary bucket indices could require $\BigOmega{\DomainSize}$ $\PCond$ queries if the elements being compared had significantly different probability masses.
 This would be as bad as learning the distribution itself. 
 Secondly, and more importantly, the above strategy is \emph{not} sound. 
 It does not catch a prover that ``slides'' all samples into different buckets \emph{in the same way}, i.e., it lies about \emph{every} bucket index by the same offset.
@@ -312,7 +313,7 @@ We summarize the ideas below.
 
 If the claimed support size upper bound $B$ is small (that is, $\BigO{\sqrt{\DomainSize}}$), we could ask the prover to send us the claimed support of the distribution. 
 If the prover lies, and the true support is actually much larger, then taking a few samples from the distribution would give us a domain element outside the claimed support, thus catching the lie of the prover. 
-If the true support is much smaller than $A$, then taking a number of uniform samples from the claimed support sent by the prover would result in a sample outside the support of the distribution, which could be easily detected with a few $\PCond$ queries (see Lemma \ref{lemma:isinsupport}). 
+If the true support is much smaller than $A$, then taking a number of uniform samples from the claimed support sent by the prover would result in a sample outside the support of the distribution, which could be easily detected with a few $\PCond$ queries. 
 This gives us a protocol with a constant number of queries, and communication complexity roughly $O(B)$. 
 
 On the other hand, if the claimed support size lower bound $A$ is large (that is, $\SmallOmega{\sqrt{\DomainSize}}$), then asking the prover to send the support is not communication-efficient. Our approach instead involves using uniform samples from the domain. %, and relying on the fact that it the prover does not know which samples are drawn from the true distribution, and which are uniformly drawn. 
@@ -335,20 +336,19 @@ This requires bounding the soundness and completeness errors in a meaningful way
 As described above, these protocols do not have low enough soundness and completeness error to be used as sub-routines. 
 Additionally, the above description assumes that distributions are exactly flat. 
 In practice this will not be the case, and we need to be able to handle distributions where the probability ratio between any two elements in the support is upper bounded by some constant $\alpha$ (nearly flat).
-In Section \ref{sec:suppsize}, we show how to analyse the protocols above to facilitate amplification of soundness and completeness errors, and make the protocol work for the more general class of $\alpha$-flat distributions. 
+We show how to analyse the protocols above to facilitate amplification of soundness and completeness errors, and make the protocol work for the more general class of $\alpha$-flat distributions. 
 
 \paragraph*{Estimating Probability of a Point using Support Size Verification:} Finally, we explain how we can use the support size protocols to estimate the probability of a point. 
-Prior work \citep{canonne2015testing} using the $\PCond$ oracle has shown that it can be used to estimate the mass within a multiplicative $(1+\Proximity)$-neighbourhood of any point\footnote{As long as the point does not have prohibitively small probability mass under the distribution.} (see \nameref{lemma:estimate-neighborhood}).
-We ask the prover to send us a point $\yStar$ \footnote{Recall that in the final protocol, we will ask the prover to send us points from every bucket with sufficiently large mass. For simplicity, we consider a single point in this description.} with sufficiently large mass in its neighbourhood (by an averaging argument, at least one histogram bucket needs to have $\Proximity/\log N$ mass, ensuring that such a point exists, see Claim \ref{claim:exists_y_star}), and tell us the bucket the $\yStar$ belongs to.
+Prior work \citep{canonne2015testing} using the $\PCond$ oracle has shown that it can be used to estimate the mass within a multiplicative $(1+\Proximity)$-neighbourhood of any point\footnote{As long as the point does not have prohibitively small probability mass under the distribution.}.
+We ask the prover to send us a point $\yStar$ \footnote{Recall that in the final protocol, we will ask the prover to send us points from every bucket with sufficiently large mass. For simplicity, we consider a single point in this description.} with sufficiently large mass in its neighbourhood (by an averaging argument, at least one histogram bucket needs to have $\Proximity/\log N$ mass, ensuring that such a point exists, and tell us the bucket the $\yStar$ belongs to.
 We then use the $\PCond$ oracle to estimate the mass within the multiplicative neighbourhood of $\yStar$. 
 The learned mass of the neighborhood divided by the prover's claimed probability mass\footnote{The bucket index gives a lower and upper bound on the true probability mass of $\yStar$. This is sufficient to catch a cheating prover.} of $\yStar$ gives us bounds on the number of elements in $\yStar$'s neighbourhood.
 Additionally, by definition the neighbourhood of $\yStar$ will be nearly flat.  
 Hence, we have reduced the problem to a claim about the support size of a nearly-uniform distribution over a subset of the domain. 
-Observe that we can sample from the distribution restricted to this bucket using $\PCond$ queries---since there is sufficient mass in the neighbourhood of the point, $O(\poly \log N)$ samples from the distribution will contain at least one sample from the bucket, and we can use $\PCond$ queries between the samples and $\yStar$ to find out which sample it is (see \nameref{lemma:sampling-lemma}). 
+Observe that we can sample from the distribution restricted to this bucket using $\PCond$ queries---since there is sufficient mass in the neighbourhood of the point, $O(\poly \log N)$ samples from the distribution will contain at least one sample from the bucket, and we can use $\PCond$ queries between the samples and $\yStar$ to find out which sample it is. 
 If the prover was telling the truth (or rather did not lie egregiously), then the support size claim holds and the verifier will accept, thereby giving us a point and its approximate probability mass\footnote{The claimed mass of $\yStar$ is derived from the bucket sent by the prover.}. 
 If the prover significantly lied, then the support size claim will be false and the prover will be caught. 
-We note that the final analysis needs to handle some additional subtleties, since the $\PCond$ oracle is itself only approximate and does not provide perfect comparisons (which can affect the sampling), and additionally the bucket boundaries and the neighborhood of the provided point do not overlap precisely. 
-We refer to Sections~\ref{sec:onebucklearner} and~\ref{sec:label-invariance} for the details.
+We note that the final analysis needs to handle some additional subtleties, since the $\PCond$ oracle is itself only approximate and does not provide perfect comparisons (which can affect the sampling), and additionally the bucket boundaries and the neighbourhood of the provided point do not overlap precisely. 
 Once we have estimated the probability of important points, we can use the ratio learning techniques discussed earlier to certify the prover's claim about the bucket histogram of the distribution. 
 %
 
