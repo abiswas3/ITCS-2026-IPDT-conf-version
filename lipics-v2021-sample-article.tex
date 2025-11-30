@@ -40,13 +40,13 @@
 
 \author{Mark Bun\footnote{Optional footnote, e.g. to mark corresponding author}}{Boston University, USA \and \url{https://cs-people.bu.edu/mbun/}}{mbun@bu.edu}{[orcid]}{[funding]}
 
-\author{Cl\'ement Canonne\footnote{Optional footnote, e.g. to mark corresponding author}}{University of Sydney, Australia \and \url{https://ccanonne.github.io}}{clement.canonne@sydney.edu.au}{[orcid]}{[funding]}
+\author{Cl\'ement L. Canonne\footnote{Optional footnote, e.g. to mark corresponding author}}{University of Sydney, Australia \and \url{https://ccanonne.github.io}}{clement.canonne@sydney.edu.au}{0000-0001-7153-5211}{Supported by an ARC DECRA (DE230101329).}
 
 \author{Satchit Sivakumar\footnote{Optional footnote, e.g. to mark corresponding author}}{Boston University, USA \and \url{https://sites.google.com/view/satchit/home?pli=1}}{satchit.sivakumar@gmail.com}{[orcid]}{[funding]}
 
 \authorrunning{A. Biswas, M. Bun, C. Cannone, S. Sivakumar} %TODO mandatory. First: Use abbreviated first/middle names. Second (only in severe cases): Use first author plus 'et al.'
 
-\Copyright{Ari Biswas, Mark Bun, Cl\'ement Cannone and  Satchit Sivakumar} %TODO mandatory, please use full first names. LIPIcs license is "CC-BY";  http://creativecommons.org/licenses/by/3.0/
+\Copyright{Ari Biswas, Mark Bun, Cl\'ement Canonne and  Satchit Sivakumar} %TODO mandatory, please use full first names. LIPIcs license is "CC-BY";  http://creativecommons.org/licenses/by/3.0/
 
 % \ccsdesc[100]{\textcolor{red}{Replace ccsdesc macro with valid one}} %TODO mandatory: Please choose ACM 2012 classifications from https://dl.acm.org/ccs/ccs_flat.cfm 
 \begin{CCSXML}
@@ -66,7 +66,7 @@
 
 % TODO: add full version
 \relatedversion{Full Version} %optional, e.g. full version hosted on arXiv, HAL, or other respository/website
-\relatedversiondetails[linktext={opt. text shown instead of the URL}, cite=DBLP:books/mk/GrayR93]{Full Version}{URL to related version} %linktext and cite are optional
+\relatedversiondetails[linktext={opt. text shown instead of the URL}, cite=]{Full Version}{URL to related version} %linktext and cite are optional
 
 %\supplement{}%optional, e.g. related research data, source code, ... hosted on a repository like zenodo, figshare, GitHub, ...
 %\supplementdetails[linktext={opt. text shown instead of the URL}, cite=DBLP:books/mk/GrayR93, subcategory={Description, Subcategory}, swhid={Software Heritage Identifier}]{General Classification (e.g. Software, Dataset, Model, ...)}{URL to related version} %linktext, cite, and subcategory are optional
@@ -74,7 +74,7 @@
 %\funding{(Optional) general funding statement \dots}%optional, to capture a funding statement, which applies to all authors. Please enter author specific funding statements as fifth argument of the \author macro.
 
 %optional
-% \acknowledgements{}
+\acknowledgements{This work was started while AB and CC were visiting the Simons Institute for the Theory of Computing as part of the Sublinear Algorithms program.}
 
 %\nolinenumbers %uncomment to disable line numbering
 
@@ -168,15 +168,15 @@ Our main result is an \emph{exponential} query complexity separation between tes
          & $\BigOTilde{\sqrt{\DomainSize}}$ \citep{herman2022verifying,herman2023doubley}
          & $\BigOTilde{\sqrt{\DomainSize}}$ \citep{herman2022verifying,herman2023doubley}
          & 2 \citep{herman2022verifying,herman2023doubley} \\\\
-$\PCond$ & $\bm{\BigOmega{\DomainSize^{1/3}}}$ (Theorem~\ref{cor:lowerbound})
+$\PCond$ & $\bm{\BigOmega{\DomainSize^{1/3}}}$
          & $\bm{\text{poly}(\log \DomainSize,\frac{1}{\Proximity})}$
          & $\bm{\BigOTilde{\sqrt{\DomainSize}}}$ 
          & $\bm{\text{poly}(\log \DomainSize, \frac{1}{\Proximity})}$   \\
-         &&\multicolumn{3}{c}{(Theorem~\ref{thm:main-thm})}\\
+         &&\multicolumn{3}{c}{}\\
 \bottomrule
 \end{tabularx}
 \caption{Results on testing and verifying label-invariant properties under different types of access to the distribution. We state the best known lower bounds for label invariant properties.
-For $\Samp$ the lower bound is for entropy estimation, whereas for $\PCond$ it is the support size decision problem described in Section \ref{sec:suppsize}.
+For $\Samp$ the lower bound is for entropy estimation, whereas for $\PCond$ it is the support size decision problem described in Section 3 of the full version.
 The upper bounds apply for all label-invariant properties.
 Our results are highlighted in bold.
 }  
@@ -204,7 +204,7 @@ The main result of this paper is an affirmative answer to this question.
 Specifically, we give an interactive proof system for tolerantly verifying \emph{any} label-invariant property that has communication complexity $\tilde{O}(\sqrt{N})$ and query complexity $\poly(\log N)$ (suppressing the dependence on the proximity parameter). 
 
 
-\begin{theorem}[Informal Label-Invariant Tolerant Verification Theorem (Theorem~\ref{thm:main-thm})]\label{thm:introlabelinv}
+\begin{theorem}[Informal Label-Invariant Tolerant Verification Theorem ]\label{thm:introlabelinv}
   Fix a label-invariant property $\Property$ over a domain $[N]$ and proximity parameters $\Proximity_c, \Proximity_f \in (0, 1/2]$. 
   There exists a polylogarithmic (in $\DomainSize$) round interactive protocol $\Protocol$ between an honest verifier $\TesterFunc$, and an omniscient untrusted prover $\Prover{\Dist}$, where the verifier has $\PCond$ access to $\Dist$, such that at the end of the interaction the verifier satisfies the following conditions:
 	\begin{enumerate}
@@ -227,10 +227,10 @@ The complexity of the verifier is as follows:
 \end{theorem}
 
 
-In the process of proving this result, we give protocols for more basic primitives that may be of independent interest. Most significantly, we give an interactive proof system that is able to calculate the approximate probability mass of any point\footnote{Provided it does not have prohibitively small probability mass in its neighborhood.} in the domain using communication complexity $\tilde{O}(\sqrt{N})$ and query complexity $O(\poly(\log N, 1/\Proximity))$. 
+In the process of proving this result, we give protocols for more basic primitives that may be of independent interest. Most significantly, we give an interactive proof system that is able to calculate the approximate probability mass of any point\footnote{Provided it does not have prohibitively small probability mass in its neighbourhood.} in the domain using communication complexity $\tilde{O}(\sqrt{N})$ and query complexity $O(\poly(\log N, 1/\Proximity))$. 
 As we will explain in the techniques section to follow, this is a key technical workhorse in our protocol for verifying label-invariant properties.
 
-\begin{theorem}[Informal Version of \Cref{lemma:approximate-single}]\label{informal:approxsingle}
+\begin{theorem}[Informal Version]\label{informal:approxsingle}
     Fix a domain $\Domain$. For every $\Proximity > 0$ and $\delta \in (0,1/2)$, there exists a $O(\ \poly(\log N, \log 1/ \delta, \frac{1}{\tau}))$-round  interactive proof system such that the verifier $\TesterFunc$ with access to a $\PCond$ oracle satisfies the following.
 	\begin{enumerate}
 
@@ -258,14 +258,14 @@ The complexity of the verifier is as follows:
 
 In this section, we give an overview of our protocol for verifying label-invariant properties.
 
-\paragraph{Unlabelled Bucket Histogram:} There is now a long line of work on the testing and verification of label-invariant properties \citep{BatuFRSW00, valiantthesis, chakraborty2013power, herman2022verifying, herman2023doubley}, and a key object used in this work is the unlabelled \emph{approximate} $\Proximity$-bucket histogram of a distribution. 
+\paragraph*{Unlabelled Bucket Histogram:} There is now a long line of work on the testing and verification of label-invariant properties \citep{BatuFRSW00, valiantthesis, chakraborty2013power, herman2022verifying, herman2023doubley}, and a key object used in this work is the unlabelled \emph{approximate} $\Proximity$-bucket histogram of a distribution. 
 Bucketing corresponds to partitioning the interval $[0,1]$ into smaller multiplicative probability intervals (see Definition \ref{defn:bucketting-or-partition}). 
 The $\Proximity$-bucket histogram divides the interval $[0,1]$ into $\BigOTilde{\log \DomainSize /\Proximity}$ buckets where the $\ell$\textsuperscript{th} bucket is a set of domain elements with individual probability mass in the range $(\Proximity(1+\Proximity)^{\ell} / N, \Proximity(1+\Proximity)^{\ell+1} / N]$. 
 The \emph{approximate} unlabelled bucket histogram of a distribution then corresponds to a list of $\tilde{O}(\log N / \Proximity)$ fractions, where the $\ell$\textsuperscript{th} element of the list is the fraction of domain points whose probability lies in the range specified by the $\ell$\textsuperscript{th} bucket (see Definition \ref{defn:approx-hist}).
 It is well known (see \citep{valiantthesis}) that the \emph{approximate} unlabelled $\Proximity$-bucket histogram of a distribution is a sufficient statistic to (tolerantly) test any label-invariant property with proximity parameter(s) $\BigO{\Proximity}$. 
 Thus, similar to prior work \citep{herman2022verifying, herman2023doubley, herman2024public}, our protocol also focuses on efficiently verifying an unlabelled $\Proximity$-bucket histogram given to us by the prover.
 
-\paragraph{Using Pairwise Comparisons to Learn Bucket Histogram:} Note that the unlabelled bucket histogram is a distribution over the buckets of the $\Proximity$-bucket histogram and is hence a distribution over a domain of size $\tilde{O}(\log \frac{N}{\Proximity})$. 
+\paragraph*{Using Pairwise Comparisons to Learn Bucket Histogram:} Note that the unlabelled bucket histogram is a distribution over the buckets of the $\Proximity$-bucket histogram and is hence a distribution over a domain of size $\tilde{O}(\log \frac{N}{\Proximity})$. 
 Hence, by standard results in distribution learning, $\tilde{O}(\log N/\Proximity^2)$ samples from this bucket distribution would be sufficient to learn it. 
 However, sampling from this bucket distribution is non-trivial since a sample from the original distribution $\Dist$ does not come with information about histogram bucket index. 
 
@@ -297,13 +297,13 @@ To deal with the first issue (that of the probability mass of $y$ being very far
 Instead, we could learn the mass of a point $y_j$, for every bucket $j$ that has large enough mass.
 This way, for any sample $x$ in the tester's set of samples (which are likely to come from buckets with sufficiently large mass), we can find some $y_j$ that is in a near-by bucket with high probability.
 
-\paragraph{Verifying the probability of points:} Given that we simply need to identify the probability of a few points in the domain, one might expect that this could be done even without access to a prover~---~this would give a query-efficient tester for label-invariant properties. 
+\paragraph*{Verifying the probability of points:} Given that we simply need to identify the probability of a few points in the domain, one might expect that this could be done even without access to a prover~---~this would give a query-efficient tester for label-invariant properties. 
 However, this ends up being a surprisingly challenging task. Indeed, our lower bound in Theorem~\ref{thm:informallb} shows that this is impossible (if we wanted to bypass the $\poly(\DomainSize)$ lower bound). 
 This indicates a power of an untrusted prover; it is able to certify the probability of a few points in the distribution support. 
 Indeed, the proof system with super-linear communication \cite{chiesa2018proofs} achieves something stronger- it certifies the entire distribution. 
 Since we only need to certify the mass of at most $\BigO{\log \DomainSize}$ points, we ask if this be done in a more communication efficient way?
 
-\paragraph{Support Size Verification:} Inspired by the ``sliding'' cheating prover from earlier, we consider the orthogonal but related problem of verifying the support size of a flat distribution.\footnote{A distribution is \emph{flat} if it is uniform over its support.} 
+\paragraph*{Support Size Verification:} Inspired by the ``sliding'' cheating prover from earlier, we consider the orthogonal but related problem of verifying the support size of a flat distribution.\footnote{A distribution is \emph{flat} if it is uniform over its support.} 
 We will subsequently show that a protocol for this problem can be combined with the ability of a $\PCond$ oracle to learn neighbourhoods around points, enabling us to solve the probability approximation problem for ``relevant'' domain elements.
 
 Given a support size claim represented by four numbers $A',A,B,B'$, corresponding to the claim that $A' < A \leq \Support{\Dist} \leq B < B'$, our hope is to accept if the claimed support size range is accurate, and reject if the true support is larger than $B'$ or smaller than $A'$. 
@@ -337,7 +337,7 @@ Additionally, the above description assumes that distributions are exactly flat.
 In practice this will not be the case, and we need to be able to handle distributions where the probability ratio between any two elements in the support is upper bounded by some constant $\alpha$ (nearly flat).
 In Section \ref{sec:suppsize}, we show how to analyse the protocols above to facilitate amplification of soundness and completeness errors, and make the protocol work for the more general class of $\alpha$-flat distributions. 
 
-\paragraph{Estimating Probability of a Point using Support Size Verification:} Finally, we explain how we can use the support size protocols to estimate the probability of a point. 
+\paragraph*{Estimating Probability of a Point using Support Size Verification:} Finally, we explain how we can use the support size protocols to estimate the probability of a point. 
 Prior work \citep{canonne2015testing} using the $\PCond$ oracle has shown that it can be used to estimate the mass within a multiplicative $(1+\Proximity)$-neighbourhood of any point\footnote{As long as the point does not have prohibitively small probability mass under the distribution.} (see \nameref{lemma:estimate-neighborhood}).
 We ask the prover to send us a point $\yStar$ \footnote{Recall that in the final protocol, we will ask the prover to send us points from every bucket with sufficiently large mass. For simplicity, we consider a single point in this description.} with sufficiently large mass in its neighbourhood (by an averaging argument, at least one histogram bucket needs to have $\Proximity/\log N$ mass, ensuring that such a point exists, see Claim \ref{claim:exists_y_star}), and tell us the bucket the $\yStar$ belongs to.
 We then use the $\PCond$ oracle to estimate the mass within the multiplicative neighbourhood of $\yStar$. 
@@ -355,774 +355,15 @@ Once we have estimated the probability of important points, we can use the ratio
 
 \subsection{Other Related Work:}
 
-\paragraph{Interactive Proofs for Distribution Testing:} As mentioned earlier, interactive proofs for verifying distribution properties were first introduced in the work of \cite{chiesa2018proofs}. Follow-up work \citep{herman2022verifying, herman2023doubley} studied interactive proofs for verifying \emph{label-invariant} properties, focusing on sublinear communication, and doubly efficient protocols (i.e. computationally-efficient and sample-efficient generation of a proof). \cite{herman2024public} studied \emph{public-coin }interactive proofs for testing label-invariant properties, where the verifier has no private randomness. \cite{HermanR24} gives communication-efficient and sample-efficient interactive proofs for more general distribution properties that can be decided by uniform polynomial-size circuits with bounded depth. \cite{HermanR25} introduces \textit{computationally sound} interactive proofs and shows communication-, time-, and sample-efficient protocols for any distribution property that can be decided in polynomial time given explicit access to the full list of distributiom probabilities. All of the above works assume that the verifier only has sample access to the distribution, and the verifier sample complexity in all of them is $\Omega(\sqrt{N})$ (where $N$ is the size of the domain). 
+\paragraph*{Interactive Proofs for Distribution Testing:} As mentioned earlier, interactive proofs for verifying distribution properties were first introduced in the work of \cite{chiesa2018proofs}. Follow-up work \citep{herman2022verifying, herman2023doubley} studied interactive proofs for verifying \emph{label-invariant} properties, focusing on sublinear communication, and doubly efficient protocols (i.e. computationally-efficient and sample-efficient generation of a proof). \cite{herman2024public} studied \emph{public-coin }interactive proofs for testing label-invariant properties, where the verifier has no private randomness. \cite{HermanR24} gives communication-efficient and sample-efficient interactive proofs for more general distribution properties that can be decided by uniform polynomial-size circuits with bounded depth. \cite{HermanR25} introduces \textit{computationally sound} interactive proofs and shows communication-, time-, and sample-efficient protocols for any distribution property that can be decided in polynomial time given explicit access to the full list of distributiom probabilities. All of the above works assume that the verifier only has sample access to the distribution, and the verifier sample complexity in all of them is $\Omega(\sqrt{N})$ (where $N$ is the size of the domain). 
 
-\paragraph{Interactive Proofs for Learning:} A related but orthogonal line of work \citep{GoldwasserRSY21, MutrejaS23, GurJKRSS24, CaroHINS24, CarosHINS25} focuses on interactive proofs for verifying learning problems-  for a specific hypothesis class $H$, given access to an untrusted prover, the goal is for a verifier to output an accurate hypothesis from $H$ for an underlying unknown distribution $D$ if the resource-rich prover is honest, and to reject if the prover lies egregiously. Different types of resource asymmetry between the prover and the verifier are explored in these papers -- including differing number of samples, different computational complexities, different types of access to the underlying function (sample vs query), and differing access to computational resources (classical vs quantum computation and communication).
+\paragraph*{Interactive Proofs for Learning:} A related but orthogonal line of work \citep{GoldwasserRSY21, MutrejaS23, GurJKRSS24, CaroHINS24, CarosHINS25} focuses on interactive proofs for verifying learning problems-  for a specific hypothesis class $H$, given access to an untrusted prover, the goal is for a verifier to output an accurate hypothesis from $H$ for an underlying unknown distribution $D$ if the resource-rich prover is honest, and to reject if the prover lies egregiously. Different types of resource asymmetry between the prover and the verifier are explored in these papers -- including differing number of samples, different computational complexities, different types of access to the underlying function (sample vs query), and differing access to computational resources (classical vs quantum computation and communication).
 
 
-\paragraph{Distribution testing under conditional oracles:} Our work focuses on interactive proofs for \textit{verifying} distribution properties under conditional sampling models. There is a long line of work on \emph{testing} with access to conditional samples. \citet{chakraborty2013power, CRS:14} introduced the conditional sampling ($\Cond$) model and its more restricted variants ($\PCond, \ICond$). They gave algorithms for uniformity testing, tolerant uniformity testing, identity testing etc. in these conditional sampling models with query and sample complexity significantly better than the $\Samp$ model. Follow-up work shows improved bounds for identity testing (and its tolerant version), tolerant uniformity testing, and new algorithms for other tasks such as equivalence testing and support size problem in the $\Cond$ model \citep{falahatgar2015faster, narayanan2020distribution, ChakrabortyKM23, ChakrabortyCK24}. 
+\paragraph*{Distribution testing under conditional oracles:} Our work focuses on interactive proofs for \textit{verifying} distribution properties under conditional sampling models. There is a long line of work on \emph{testing} with access to conditional samples. \citet{chakraborty2013power, CRS:14} introduced the conditional sampling ($\Cond$) model and its more restricted variants ($\PCond, \ICond$). They gave algorithms for uniformity testing, tolerant uniformity testing, identity testing etc. in these conditional sampling models with query and sample complexity significantly better than the $\Samp$ model. Follow-up work shows improved bounds for identity testing (and its tolerant version), tolerant uniformity testing, and new algorithms for other tasks such as equivalence testing and support size problem in the $\Cond$ model \citep{falahatgar2015faster, narayanan2020distribution, ChakrabortyKM23, ChakrabortyCK24}. 
 There is also a line of work studying the power of non-adaptive queries in the conditional sampling model \citep{AcharyaCK15, KamathT19}. The $\PCond$ model was studied in detail by \cite{narayanan2020distribution} who gave optimal bounds for identity testing and tolerant uniformity testing in this model, improving on results from \cite{canonne2015testing}. Testing under other types of conditional sampling has also been studied in the literature including subcube conditioning, where the distribution is supported on the hypercube, and the tester is allowed to ask for conditional samples from subcubes \citep{BhattacharyyaC18, CanonneCKLW21, ChenJLW21, KumarMM23, ChakrabartyCR0W25}, and coordinate conditional sampling \citep{BlancaCSV25} (a version of subcube conditioning where all but one coordinate is fixed to a specific configuration and a sample is obtained from the remaining coordinate). Testing under other types of access to the distribution such as Probability Mass Function queries or Cumulative Distribution Function queries has also been studied in the literature \citep{BatuDKR02, RubinfeldS05, GuhaMV09,  CanonneR14,OnakS18}.
 
-\section{Preliminaries} \label{sec:prelims}
 
-
-\paragraph{General Notation}
-%Without loss of generality, we can assume that an algorithm or a tester $\TesterFunc(x, y)$ is an Oracle Machine that receives strings $x, y \in \bit^*$ on its input tape.
-We use $\DistSet{\mathcal{X}}$ to denote the set of all probability distributions over some set $\mathcal{X}$, and $[N]$ as shorthand for the set $\{1, \dots, N\}$.
-We use the notation $x \samples \Dist$ to indicate $x$ was sampled according to $\Dist$.
-Given a set $S \subseteq \mathcal{X}$, we use $\Dist[S] \Def \sum_{y \in S} \Dist[y] \Def \sum_{y \in S} \PProb{x = y}{x\samples \Dist}$ to denote the probability of hitting set $S$ when sampling from $\Dist$, and $\Dist[y]$ is the probability of seeing $y$ when sampling according to $\Dist$.
-When we say distance of a distribution $\Dist$ from a property $\Property \subseteq \DistSet{\mathcal{X}}$, we mean $\TV{\Dist}{\Property} \Def \min_{\DistPrime \in \Property}\TV{\Dist}{\DistPrime}$, where $\TV{\Dist}{\Dist'}$ denotes the total variation distance between two distributions.
-We use $\Support{\Dist}$ to denote the support of a distribution  $\Dist$.
-For any set $\mathcal{X}$, we use $\mathcal{S}_{\mathcal{X}}$ to denote the set of permutations over the set.
-Throughout, we use tilde notation $\Claimed{\cdot}$ with lighter font to denote an untrusted prover's claims.
-For example, we use $\ClaimedDist{x}$ to denote a prover's claim about the probability mass of $x \in \Domain$ under $\Dist$, and $\TrueDist{x}$ as the true mass.
-Similarly, $\Tag{x}$ will denote the provers claim about the histogram bucket index (see Definition \ref{defn:bucketting-or-partition}), versus $\BucketOf{\Proximity}{x}$ which denotes the true index under $\Dist$.
-
-\begin{definition}[Label-Invariant Properties]\label{defn:label-invariant-prop}
-	A property $\Property \subseteq \DistSet{\mathcal{X}}$ is said to be \emph{label-invariant} (or \emph{symmetric}) if it is closed under permutations of the domain: that is, if $\Dist \in \Property$ and $\pi \in \mathcal{S}_{\mathcal{X}}$, then the distribution $\Dist_\pi$ defined by
-	\[
-    \Dist_\pi[x] \Def \Dist[\pi(x)], \qquad x\in \mathcal{X},
-	\]
-	is also in $\Pi$.
-\end{definition}
-
-The set of distributions over $\Domain$ with support size less than 20 is an example of a label-invariant property.
-Next, we give the definition for the \emph{true} histogram of a distribution $\Dist$, followed by the $\Proximity$-approximate histogram, which can be viewed as a discretisation of the true histogram of a distribution. 
-For label-invariant properties it makes more sense to use the following notion of distance instead of total variation distance.
-
-\begin{definition}[Relabelling Distance]Given two distributions $\Dist, \Dist' \in \DistSet{\Domain}$, we define the relabelling distance between $\Dist$ and $\Dist'$ as 
-
-  \[ \RL{\Dist}{\Dist'} \Def \min_{\pi \in \mathcal{S}_{\Domain}} \TV{\Dist}{\Dist'_{\pi}} =  \min_{\pi \in \mathcal{S}_{\Domain}} \frac{1}{2}\sum_{x \in \Domain} \left| \Dist[x] - \Dist'[\pi(x)]\right| \]
-  
-\end{definition}
-
-
-\begin{definition}[Histograms Of Distributions]
-%  Let $\Dist \in \DistSet{\Domain}$ be a distribution. 
-  Define the normalised \emph{histogram} of $\Dist \in \DistSet{\Domain}$ as the non-negative function $h_\Dist: [0,1] \rightarrow [0, 1]$
-\[
-  h_{\Dist}(z) \;=\; \frac{1}{\DomainSize}\bigl|\{i \in \Domain : \TrueDist{i} = z\}\bigr|
-  \quad \text{for each } z \in [0,1].
-\]
-
-\end{definition}
-
-Thus, $h_\Dist(z)$ counts the fraction of domain elements with probability mass $z$. 
-For a function any non-negative function $h$, we use $\Support{h}$ to denote the set $\{x \in [0, 1]: h(x) > 0 \}$. 
-Observe that 
-\[
-  \int_{0}^1 h_\Dist(z)\, dz = 1.
-\]
-
-
-\begin{definition}[$\ApproxHistParam$-Bucketing]
-	\label{defn:bucketting-or-partition}
-  Fix $\Dist \in \DistSet{\Domain}$ and $\Proximity \in (0,1]$.  
-  Let $\NumBuckets = \left\lceil\frac{\log(\DomainSize/\Proximity)}{\log(1+\Proximity)}\right\rceil = \BigO{\log(\DomainSize/\Proximity)}$ denote the number of buckets.	 
-  We denote with sets $\{ B_j^{\Dist}\}_{j\in \BucketIndices}$ the $\Proximity$-partitioning (bucketing) of the elements in the support of $\Dist$ where
-	\[
-  B_\ell^{(\Dist, \Proximity)} = \left\{x \in \Domain :  \frac{\Proximity(1+\Proximity)^{\ell-1}}{\DomainSize}  < \Dist[x]  \leq \frac{\Proximity(1+\Proximity)^{\ell}}{\DomainSize} \right\} \text{ for all } \ell \in \{1, \ldots, \NumBuckets\}	
-  \]
-  and 
-  	\[
-  B_0^{(\Dist, \Proximity)} = \left\{x \in \Domain :  \Dist[x] \le \frac{\Proximity}{\DomainSize} \right\} 
-  \]
- 
-    where $\BucketIndices = \left\{0, 1, \dots, L \right\}$. 
-\end{definition}
-Throughout this document, for any $x \in \Domain$, we use $\BucketOf{\Proximity}{x} \in \BucketIndices$ to denote the bucket to which $x$ belongs.
-When the context is clear, we will often drop the superscript in $B_j^{(\Dist, \Proximity)}$, and write just $B_j$.
-Note that the buckets above are disjoint, and cover the entire $[0,1]$ interval. 
-So for any $z \in [0,1]$ it can belong to exactly \emph{one} bucket. This allows to give the following definition for an approximate histogram.
-
-\begin{definition}[Approximate Histogram of a Distribution]\label{defn:approx-hist}
-  Given a $(\DomainSize, \Proximity)$-bucketing of a distribution $\Dist$:  $\left\{ B_j\right\}_{j \in \BucketIndices}$, we define the normalised $\Proximity$-histogram of $\Dist$ with the following non-negative function $h_\Dist^{(\Proximity)}: [0,1] \to [0, 1]$, where  
-\[
-  h_\Dist^{(\Proximity)}(z) \;=\;
-  \begin{cases}
-    \TrueDist{B_0}, & \text{if } z \le \frac{\Proximity}{\DomainSize}, \\
-    \TrueDist{B_\ell}, & \text{if } z \in \left(\frac{\Proximity(1+\Proximity)^{\ell-1}}{\DomainSize},\,\frac{\Proximity(1+\Proximity)^{\ell}}{\DomainSize}\right], \; \ell \in \{1, \dots, \NumBuckets\}.
-  \end{cases}
-\]
-
-\end{definition}
-
-
-In the rest of the document, we use this succinct notation to represent approximate histograms of a distribution.
-As histograms are defined by non-negative functions over $[0,1]$, it is possible to define distances between histograms with the Earth-Mover Distance Function.
-
-\begin{definition}[Earth-Mover Distance and Relative Earth-Mover Distance]
-Let $h$ and $h'$ be two non-negative functions over $[0,1]$ such that
-\[
-  \sum_{x \in \Support{h}} h(x) \;=\; \sum_{x \in \Support{h'} } h'(x).
-\]
-The \emph{Earth-Mover Distance (EMD)} between $h$ and $h'$, denoted
-$\EMD{h}{h'}$, is defined as
-\[
-  \EMD{h}{h'} \;=\; \min_{m} \;
-\sum_{x \in S(h)} \sum_{y \in S(h')} m(x,y)\cdot |x-y|,
-\]
-where the minimum is taken over all non-negative functions
-$m: \Support{h} \times \Support{h'} \to \mathbb{R}$ such that:
-\begin{align*}
-\sum_{y \in \Support{h}} m(x,y) &= h(x), &\forall x \in \Support{h}, \\
-\sum_{x \in \Support{h'}} m(x,y) &= h'(y), &\forall y \in \Support{h'}.
-\end{align*}
-
-\end{definition}
-
-The mental model, and the source of the metrics nomenclature is the following: Imagine we start with a non negative function $h$ which has a hole for each $z \in [0,1]$, filled with $h(z)$ volume of dirt. 
-In the case of approximate histograms, the holes with dirt are the buckets with non-zero mass, and the support size of $h$ is the number of buckets.
-Given a histogram $h'$, the earth-mover distance between $h$ and $h'$ is the minimum volume of dirt that must be moved from the support of $h$ to the support of $h'$ to transform $h$ into $h'$.
-The following lemma is due to \cite[Lemma 5]{goldreich2020relation} links distances between histograms to re-labelling distances. 
-\begin{lemma}[Relationship Between Re-labelling Distance And Earth Mover Distance]\label{lemma:rel-rl-emd}For any two distributions $\Dist, \Dist' \in \DistSet{\Domain}$, let $h_\Dist$ and $h_\Dist'$ denote the histogram for $\Dist$ and $\Dist'$ respectively. 
-  Then we have 
-  \[
-    \RL{\Dist}{\Dist'} = \frac{1}{2}\EMD{h_\Dist}{h_\Dist'} 
-  \]
-  
-\end{lemma}
-
-\paragraph{Oracle Access Models}
-    Testers, provers, and verifiers in this paper take as input parameters such as the data domain size $N$, error tolerance, and completeness and soundness failure probabilities. They are also given oracle access to the distribution $\Dist$ comprising the problem instance as follows.
-	A conditional oracle for distribution $\Dist \in \DistSet{\Domain}$, denoted by $\Cond$, takes as input a set $S \subseteq \Domain$ with the constraint $\Dist(S) > 0$, and outputs an $x \in S$ with probability $\Dist_S[x] = \frac{\TrueDist{x}}{\TrueDist{S}}$.
-	If the testing algorithm sends $S$ such that $\Dist(S) = 0$, then the oracle outputs $\Fail$.
-	A $\PCond$ oracle for a distribution $\Dist \in \DistSet{\DomainSize}$ is a conditional oracle with the restriction that inputs to the oracle must be of size exactly two or $\DomainSize$.
-
-
-
-The round complexity counts the number of rounds of interaction between the prover and the verifier, where one round consists of a message from the verifier, \emph{and} the prover's response.
-For any algorithm $\mathsf{A}$, we use parentheses $(\cdot)$ to distinguish between $\mathsf{A}^\Dist$ having full knowledge of the distribution, and $\mathsf{A}^{(\Dist)}$ only being able to access $\Dist$ via oracles. 
-Before describing proof systems, we recap the definition of a tolerant testing algorithm \emph{without} a prover.
-
-\begin{definition}[Tolerant $\BPPTester$ Tester]
-	A $\BPPTester$ tolerant tester for property $\Property \subseteq
-		\DistSet{\Domain}$ is a testing algorithm $\Tester{\Dist}{\DomainSize, \Proximity_c, \Proximity_s} $ such that for any $\Proximity_c, \Proximity_s \in (0, 1]$ we have
-
-	\begin{itemize}
-		\item{\textbf{Completeness}: For every $\Dist \in \DistSet{\Domain}$ such that $\TV{\Dist}{\Property} \leq \Proximity_c$,  \[ \Prob{\Tester{\Dist}{\DomainSize, \Proximity} = \Yes} \geq \frac{2}{3}\]}
-
-		\item{\textbf{Soundness}: For every $\Dist \in \DistSet{\Domain}$ such that $\TV{\Dist}{\Property} > \Proximity_s$,  we have
-		      \[
-			      \Prob{\Tester{\Dist}{\DomainSize, \Proximity} = \Yes} \leq \frac{1}{3}
-		      \]}
-	\end{itemize}
-
-
-\end{definition}
-
-%\begin{definition}[$\MATester$]An $\MATester$ tester for property $\Property \subseteq
-%		\DistSet{\Domain}$ is a testing algorithm $\TesterFunc$ such that for any $\Proximity \in (0, 1]$ we have
-%
-%	\begin{itemize}
-%		\item{\textbf{Completeness}: For every $\Dist \in \Property$, there exists a proof string $\Proof \in \bitStrings$ such that \[ \Prob{\Tester{\Dist}{\DomainSize, \Proximity, \Proof} = \Yes} \geq \frac{2}{3}\]}
-%
-%		\item{\textbf{Soundness}: For every $\Dist$ such that $\TV{\Dist}{\Property} \geq \Proximity$, for  \highlight{every} proof string $\Proof \in \bitStrings$ we have  \[ \Prob{\Tester{\Dist}{\DomainSize, \Proximity, \Proof} = \Yes} \leq \frac{1}{3}\]}
-%	\end{itemize}
-%
-%
-%\end{definition}
-%
-%
-%
-%\begin{definition}[$\NPTester$]
-%	An $\NPTester$ distribution tester is a deterministic $\MATester$.
-%\end{definition}
-
-%To be specific, when we say a $\NPTester$ tester is deterministic we mean that it is not equipped with a local random tape.
-%The oracle responses are still random.
-%This means that both $\NPTester$ and $\MATester$ testers have access to randomness.
-%An $\MATester$ has access to additional random bits which it gets from its local random tape.
-
-\paragraph{Proof Systems} The complexity of a proof system is measured by the number of oracle calls a verifier makes. 
-In this work, to make accounting more granular, we report independent and identically distributed (iid) samples from the distribution and $\PCond$ queries separately.
-The total query complexity is the sum of the two measures.
-The communication complexity is measured in the number of bits\footnote{As any domain element can be represented in $\log_2 \DomainSize$ bits, when suppressing log factors in asymptotic expressions, the communication complexity can be read as the number of domain elements exchanged.} that the prover and verifier exchange throughout the proof. 
-
-\begin{definition}[Tolerant $\IPTester$ Tester]
-	A tolerant $\IPTester$ for property $\Property \subseteq
-		\DistSet{\Domain}$ is testing algorithm $\Tester{\Dist}{\Proximity_c, \Proximity_s, \DomainSize}$ that interactively exchanges messages with an omniscient but untrusted prover $\Prover{\Dist}(\Proximity_c, \Proximity_s, \DomainSize)$, such that at the end of the interaction, for any $\Proximity_c, \Proximity_s \in (0, 1]$ we have
-
-	\begin{itemize}
-		\item{\textbf{Completeness}: For every $\Dist \in \DistSet{\Domain}$, such that $\TV{\Dist}{\Property} \leq \Proximity_c$, there exists a prover $\prover$ such that
-
-		      \[
-			      \Prob{\ProofSystem{\Dist}{\DomainSize, \Proximity} = \Yes} \geq \frac{2}{3}
-		      \]
-
-		      }
-
-		\item{\textbf{Soundness}: For every $\Dist \in \DistSet{\Domain}$ such that $\TV{\Dist}{\Property} > \Proximity_s$, for \emph{every} prover strategy $\chProver$  we have
-
-		      \[
-			      \Prob{\ChProofSystem{\Dist}{\DomainSize, \Proximity} = \Yes} \leq \frac{1}{3}
-		      \]
-
-		      }
-	\end{itemize}
-
-%	The round complexity $\RoundComplexity{\DomainSize, \Proximity}$ depicts the number of rounds of interaction, where one round constitutes a single back and forth between the two parties. The communication and query complexity is the sum of the query and communication for each round.
-\end{definition}
-
-
-Throughout this document, a distribution that is uniformly distributed over its support is referred to as a flat distribution.
-
-\begin{definition}[Nearly Flat Distributions]
-	\label{def:nearly:flat}
-	Given a parameter $\kappa \geq 1$, a probability distribution $\Dist$ over $\Domain$ is said to be \emph{$\kappa$-flat} if the probabilities of any two elements of its support are within a factor $\kappa$; that is,
-	\[
-		\max_{x\in\Support{\Dist}} \Dist[x] \leq \kappa\cdot\min_{x\in\Support{\Dist}} \Dist[x]\,.
-	\]
-	(Note that $1$-flat distributions are exactly the flat distributions.) We further refer to $2$-flat distributions as \emph{nearly flat}.
-\end{definition}
-
-\subsection{Useful Tools}
-
-In this section, we describe a couple of useful lemmas that we repeatedly use later in the document.
-
-\begin{lemma}[Compare Algorithm]\label{lemma:pcond-empirical-guarantee}
-	There is an algorithm \texttt{COMPARE} which, provided $\PCond$ oracle for an arbitrary probability distribution $\Dist \in \DistSet{\Domain}$, has the following guarantees. On input $\gamma, \beta \in (0,1]$ and $K\geq 1$, as well as two distinct elements $x,y \in \Domain$, the algorithm makes $\BigO{\frac{K\log 1/\beta}{\gamma^2}}$ queries to the oracle and outputs either $\textsf{High}$, $\textsf{Low}$, or a value $\alpha > 0$, such that the following holds.
-    \begin{itemize}
-        \item If $\frac{\Dist[x]}{\Dist[y]} > K$, then with probability at least $1-\beta$ the algorithm outputs either $\textsf{High}$, or a value $\alpha > 0$ such that $\left|\frac{\Dist[x]}{\Dist[y]} - \alpha \right| \leq \gamma$;
-        \item If $\frac{\Dist[x]}{\Dist[y]} < 1/K$, then with probability at least $1-\beta$ the algorithm outputs either $\textsf{Low}$, or a value $\alpha > 0$ such that $\left|\frac{\Dist[x]}{\Dist[y]} - \alpha \right| \leq \gamma$;
-        \item Otherwise, with probability at least $1-\beta$ it outputs a value $\alpha > 0$ such that $\left|\frac{\Dist[x]}{\Dist[y]} - \alpha \right| \leq \gamma$.
-    \end{itemize}
-\end{lemma}
-
-The proof follows from the guarantees of \citep[Lemma~2]{canonne2015testing}, specialized for the case of $\PCond$.
-
-
-\paragraph{Checking Membership in Support}
-
-
-\begin{algorithm}
-	\caption{\texttt{IsInSupport} algorithm.}
-	\label{alg:pcond-support-checker}
-	\begin{algorithmic}[1]
-		\Require Given $x \in \Domain$, and $y \in \Domain$, failure probability parameter $\beta\in (0,1)$,  oracle access to $\PCond^{\Dist}$ for a nearly flat distribution $\Dist$.
-		\Ensure Check if  $y \in \Support{\Dist}$
-		\State Set $T = \lceil \log_{3/2}(1/\beta)\rceil$
-		\ForAll{$1\leq t\leq T$}
-		\State $s\samples \PCond^{\Dist}(\{x,y\})$ \label{step:querytopcond}
-		\If{$s = y$}
-		\Return $\Yes$
-		\EndIf
-		\EndFor
-		\State \Return $\No$
-	\end{algorithmic}
-\end{algorithm}
-
-\begin{lemma}
-	\label{lemma:isinsupport}
-  The algorithm $\texttt{IsInSupport}$ has the following guarantees. On inputs $x,y \in \Domain$ and $\beta\in(0,1)$, it makes $\BigO{\log(1/\beta)}$ queries to the $\PCond^{\Dist}$ oracle. Further, if $\Dist$ is nearly flat(Definition \ref{def:nearly:flat}), then
-	\begin{itemize}
-		\item If $y\in \Support{\Dist}$, it returns $\Yes$ with probability at least $1-\beta$;
-		\item If $y\notin \Support{\Dist}$ and $x \in \Support{\Dist}$, it returns $\No$ with probability $1$.
-	\end{itemize}
-\end{lemma}
-\begin{proof}
-	The claimed query complexity is immediate from our setting of $T$, observing that the only $\PCond$ queries are on Line~\ref{step:querytopcond}. Turning to the correctness, assume that $\Dist$ is nearly flat.
-
-	If $x=y$, the claims are trivially true and vacuous, respectively; we can thus assume $x\neq y$. Then, on the one hand, if $y\in \Support{\Dist}$, then (regardless of whether $x$ is in $\Support{\Dist}$ or not), $\Dist[y] \geq \frac{1}{2}\cdot \Dist[x]$, and so
-	\[
-		\Prob{\PCond^{\Dist}(\{x,y\}) = x} = \frac{\Dist[x]}{\Dist[x]+\Dist[y]} \leq \frac{2}{3}\,.
-	\]
-	The probability that none of the $T$ independent queries returned $y$ is then at most $2/3)^T \leq \beta$.
-	On the other hand, if $y\notin \Support{\Dist}$ but $x \in \Support{\Dist}$, then $\Prob{\PCond^{\Dist}(\{x,y\}) = x} = 1$, and so the algorithm returns $\No$ with probability 1.
-\end{proof}
-
-\section{Support Size Verification}\label{sec:suppsize}
-
-
-In this section, we describe a succinct proof system for the two-sided support size decision problem, which may be of independent interest. 
-This proof system, when used in conjunction with the \nameref{lemma:estimate-neighborhood}, allows a tester to accurately approximate the mass of ``important`` points in \emph{any} ``relevant/heavy'' bucket of the $(\DomainSize, \Proximity)$-histogram for the distribution.
-This ability to estimate the mass of points in heavy enough buckets is critical for verifying the prover's claimed histogram, which then allows us to verify any label-invariant property.
-Our key technical contribution here is to ensure that the communication complexity of the proof system is sub-linear in the domain size $N$ while also ensuring polylogarithmic in $N$ query and sample complexities.
-To ensure low communication, we give two different protocols to apply based on the parameter range of interest. Looking forward, when we use these protocols, $A$ and $B$ will be set based on the claims of the prover in the final protocol for verifying label-invariant properties, and $A'$ and $B'$ will be set such that $A/A' = B'/B = 1+\tau$, where $\tau$ is the proximity parameter for the verification problem.
-
-
-%\ssnote{Maybe mention here what types of parameters we expect to use these results for- $A$ and $A'$ and $B$ and $B'$ differ by a power of $1+\tau$}
-
-\subsection{Proofs For Testing Support Size For Distributions With Large Support}
-
-To start with, we describe with Figure \ref{alg:large-supp-size}, a proof system for distributions with large support, which requires us to run two separate proof systems sequentially for the two sides of the test (testing whether the claimed support is too large or too small).
-
-\begin{mdframed}[
-		frametitle={Uniform Protocol},
-		frametitlealignment=\centering
-	]
-	\flushleft
-	\textbf{Common Input}: Description of domain $\Domain$, parameters $\alpha,\delta\in(0,1]$, and $A', A, B, B'$ with $\alpha \leq \frac{3}{2}\frac{B'-B}{B}$.\\
-
-	\textbf{Verifier Input}: $\PCond$ access to an $(1+\alpha)$-flat distribution $\Dist \in \DistSet{\Domain}$.\\
-
-	\textbf{Prover Input}: Full description of $\Dist$.\newline
-
-	Draw $\highlight{x} \samples \Dist$. \newline
-
-	\textbf{Test 1:} ``\textsc{Detect Small Support}''
-    \begin{itemize}
-        \item Compute the values $p_{\Reject},$ $q_{\Accept}$ as in~\cref{claim:test1}, and set
-        \[
-            \Delta_1 = (1-q_{\Accept}) - p_{\Reject} = \BigOmega{\left(\frac{A-A'}{A}\right)^2}
-        \]
-        \item Run sequentially the proof system \textbf{Test~1} of~\cref{alg:large-supp-size:test1}, on input $\True{x}$, $A,A'$ a total of
-        \[
-            T_1 \Def \BigO{\frac{\log(1/\delta)}{\Delta_1^2}}
-        \]
-        times, with fresh randomness for each of the $T_1$ runs. Let $0\leq t_1\leq T_1$ be the number of runs in which the proof system returns $\Accept$. 
-        \item Set the outcome of this test to $\Accept$ if $t_1 < (p_{\Reject} + \frac{\Delta_1}{2})T_1$, and to $\Reject$ otherwise.
-    \end{itemize}
-
-	\textbf{Test 2:}  ``\textsc{Detect Large Support}''
-    \begin{itemize}
-        \item Compute the values $p'_{\Reject},$ $q'_{\Accept}$ as in~\cref{claim:test2}, and set
-        \[
-            \Delta_2 = (1-q'_{\Accept}) - p'_{\Reject} = \BigOmega{\frac{\left(B'-B\right)^2}{B'^2}\frac{B}{B'}}
-        \]
-        \item Run sequentially the proof system \textbf{Test~2} of~\cref{alg:large-supp-size:test2}, on input $B,B'$ a total of
-        \[
-            T_2 \Def \BigO{\frac{\log(1/\delta)}{\Delta_2^2}}
-        \]
-        times, with fresh randomness for each of the $T_2$ runs. Let $0\leq t_2\leq T_2$ be the number of runs in which the proof system returns $\Accept$. 
-        \item Set the outcome of this test to $\Accept$ if $t_2 < (p'_{\Reject} + \frac{\Delta_2}{2})T_2$, and to $\Reject$ otherwise.
-    \end{itemize}
-    
-	\textbf{Final Output}: The verifier outputs $\Accept$ if and only if both tests above were set to $\Accept$.
-
-\captionsetup{hypcap=false}
-\captionof{figure}{Proof System For Support Size Range For Distributions With Large Support}
-\label{alg:large-supp-size}
-\captionsetup{hypcap=true} % restore default
-\end{mdframed}
-
-
-
-\begin{lemma}[Support Size Difference For Large Support Distributions]\label{lemma:supp-size-large}Fix $\DomainSize \in \Naturals$, and let $0\leq \alpha \leq 1$.
-	Fix integer parameters $A' < A < B < B'$ such that $A \ge \sqrt{\DomainSize}$ and $\alpha \leq \frac{3}{2}\cdot \frac{B'-B}{B}$, and failure probability $\delta\in(0,1]$.
-	Given $\PCond$ access to a $(1+\alpha)$-flat distribution $\Dist \in \DistSet{\Domain}$, the interactive proof system described in Figure~\ref{alg:large-supp-size}  decides the following promise problem completeness and soundness errors are at most $\delta$:
-    \begin{align}
-		\Property_\Yes & \Def  \{ \Dist \in \DistSet{\Domain}: A \le \SupportSize{\Dist} \le B \land \Dist \text{ is $(1+\alpha)$-flat}\}                    \\
-		\Property_\No  & \Def  \{ \Dist \in \DistSet{\Domain} : \left(\SupportSize{\Dist} \le A' \lor \SupportSize{\Dist} \ge B'\right) \land \Dist \text{ is $(1+\alpha)$-flat}\}
-	\end{align}
-    The proof system has communication complexity
-    \[
-    \BigO{\max\left(
-        \frac{\DomainSize}{A}\cdot \left(\frac{A}{A-A'}\right)^4,
-        \frac{\DomainSize}{B'}\cdot \left(\frac{B'}{B}\right)^2\left(\frac{B'}{B'-B}\right)^4  \log \frac{1}{\delta}\right)}\,
-    \]
-    sample complexity
-    \[
-        \BigO{\left(\frac{B'}{B}\right)^2\left(\frac{B'}{B'-B}\right)^4 \log \frac{1}{\delta}}\,,
-    \]
-    query complexity
-    \[
-        \BigOTilde{\left(\frac{A}{A-A'}\right)^4\log \frac{1}{\delta}}\,,
-    \]
-	and round complexity
-    \[
-    \BigO{\max\left(
-        \left(\frac{A}{A-A'}\right)^4,
-        \left(\frac{B'}{B}\right)^2\left(\frac{B'}{B'-B}\right)^4 
-    \right) \log \frac{1}{\delta}}\,.
-    \]
-\end{lemma}
-%\clement{I don't really see the ``one'' sample claim: calling Compare on the $c_1$ elements will require $\tilde{O}(c_1)$ PCOND queries, which will be constant, but more than 1.}
-\begin{proof}
-The various complexities immediately follow from those of~\cref{claim:test1,claim:test2}, after repetition for $T_1 = \BigO{
-        \left(\frac{A}{A-A'}\right)^4 \log \frac{1}{\delta}}$ and $T_2 = \BigO{
-        \left(\frac{B'}{B}\right)^2\left(\frac{B'}{B'-B}\right)^4 \log \frac{1}{\delta}}$ rounds, respectively.
-The stated completeness and soundness errors follow from (sequential) repetition with a threshold rule, along with a standard Hoeffding bound.\footnote{Namely, if a single test has rejection probabilities $p,q$ with $q\geq p+\Delta$ in the $\Yes$ and $\No$ cases, respectively, repeating the test sequentially (with fresh randomness) a total of $O(\log(1/\delta)/\Delta^2)$ times and thresholding at $p+\frac{\Delta}{2}$ results in a correct outcome with probability at least $1-\frac{\delta}{2}$.} Amplifying both \textbf{Test~1} and \textbf{Test~2} by sequential repetition to correctly estimate their rejection probability, except with probability $\frac{\delta}{2}$, and taking a union bound over the two, yields the claimed statement.
-\end{proof}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{mdframed}[
-		frametitle={Test 1},
-		frametitlealignment=\centering
-	]
-	\flushleft
-	\textbf{Common Input}: Description of domain $\Domain$, integers parameters $A' < A$.\\
-
-	\textbf{Verifier Input}: $\PCond$ access to a nearly flat distribution $\Dist \in \DistSet{\Domain}$, element $\True{x} \in \Support{\Dist}$.\\
-
-	\textbf{Prover Input}: Full description of $\Dist$.
-
-	\begin{enumerate}
-		\item Set $c\Def \frac{A-A'}{2A}$, $s \Def c\frac{\DomainSize}{A}$, $\beta \Def c^2 e^{-c}$.
-		\item{\textbf{$\TesterFunc \rightarrow \Prover{\Dist}$}: Send set $Y$ where $Y = (y_1, \ldots, y_{s}) \samples \Uniform{\DomainSize}$, and ask the prover to send back any $\widetilde{y}\in Y$ such that $\widetilde{y} \in \Support{\Dist}$.         }
-
-		\item{\textbf{$\TesterFunc \leftarrow \Prover{\Dist}$}: Sends back $\widetilde{y} \in \Support{\Dist}$. If no such $\widetilde{y}$ exists, then output $\Fail$.
-		      }
-
-
-		\item{$\TesterFunc$ computation: If prover outputs $\Fail$, then output $\Reject$. Otherwise, check $\widetilde{y} \in \Support{\Dist}$ using the \nameref{alg:pcond-support-checker}  with reference $\highlight{x}$ and probability of failure $\beta$: if it returns $\Yes$, output $\Accept$, and $\Reject$ otherwise.}
-
-	\end{enumerate}
-    \captionsetup{hypcap=false} % restore default
-	\captionof{figure}{First Proof System For Support Size Range For Distributions With Large Support}\label{alg:large-supp-size:test1}. 
-    % This proof system does not make any $\Samp$ queries.
-    % Only $\PCond$ queries and uniform samples from the domain suffice.
-    \captionsetup{hypcap=true} % restore default
-\end{mdframed}
-% \clement{Need ceilings around $s$? Annoying for the inequalities in the soundness case...}
-\begin{claim}[Detecting Small Support]
-    \label{claim:test1}
-    The proof system given in~\cref{alg:large-supp-size:test1} has the following guarantees. 
-    On input access to a nearly flat distribution $\Dist$, along with an element $\True{x}\in\Support{\Dist}$ and integers $A'< A \leq \DomainSize$, it has communication complexity $\BigO{\DomainSize/A}$, query complexity $\BigO{\log \frac{A}{A-A'}}$ (and sample complexity $0$), and  decides between
-    (1)~$\SupportSize{\Dist} \geq A$ and (2)~$\SupportSize{\Dist} \leq A'$
-    with completeness and soundness errors at most $p_{\Reject}$ and $q_{\Accept}$, explicit values such that
-    \[
-        1-q_{\Accept} > p_{\Reject} + \BigOmega{\left(\frac{A-A'}{A}\right)^2}\,.
-    \]
-    Moreover, it has round complexity $1$.
-\end{claim}
-\begin{proof}
-    The communication complexity follows from our choice of $s = \BigO{\DomainSize/A}$, and the query complexity from the call to \nameref{alg:pcond-support-checker}, which has query complexity
-    \[
-        \BigO{\log\frac{1}{\beta}} = \BigO{\log\frac{1}{c}+c} = \BigO{\log\frac{1}{c}}= \BigO{\log\frac{A}{A-A'}}
-    \]
-    by our setting of parameters and~\cref{lemma:isinsupport}. Turning to correctness, we analyze the completeness and soundness claims separately.
-    \begin{description}
-        \item[Completeness:] assume that $\SupportSize{\Dist} \geq A$. We have the probability that a uniformly sampled point is in the support is at least $\frac{A}{\DomainSize}$.
-	    If any of the samples $y_1, \ldots, y_{s}$ is in the support of $\Dist$, then the honest prover is able to get the verifier to accept in \textbf{Test 1} by sending one of these samples, unless the call to~\nameref{alg:pcond-support-checker} then fails (which since the distribution is nearly flat happens with probability at most $\beta$ by~\cref{lemma:isinsupport}).
-	    Therefore, by a union bound, the completeness error for the first test is upper bounded as follows:
-        \begin{align*}
-    		&\Prob{\TesterFunc \text{ outputs } \Reject } \\
-            &=  \PProb{ \{y_1, \ldots, y_{s}\}\cap \Support{\Dist} = \emptyset }{y_1, \ldots, y_{s} \samples  \Domain} 
-            \\&\qquad + \PProb{ \{y_1, \ldots, y_{s}\}\cap \Support{\Dist} \neq \emptyset, \text{ \nameref{alg:pcond-support-checker} incorrect}}{y_1, \ldots, y_{s} \samples  \Domain} \\
-            &\leq  \left(1 - \frac{A}{\DomainSize}\right)^{s}  + \beta\\
-            &\leq  \left(1 - \frac{A}{\DomainSize}\right)^{c\frac{\DomainSize}{A}}  + \beta
-            \\
-            &\leq  e^{-c}  + c^2 e^{-c} = (1+c^2)e^{-c} = p_{\Reject}\,.
-    	\end{align*} 
-        
-        recalling our choice of $s,\beta$, and using the inequality $1-x\leq e^{-x}$.
-        \item[Soundness:] conversely, assume that $\SupportSize{\Dist} \leq A'$. \textbf{Test 1} can only accept if at least one of the uniformly chosen $y_1, \ldots, y_{s}$ falls in the support of $\Dist$ (otherwise it will always reject, as the~\nameref{alg:pcond-support-checker} has one-sided error in that case). By a union bound over all $s$ uniform samples, this leads to
-        	\begin{align*}
-        		\Prob{\TesterFunc \text{ outputs } \Accept \text{ in  \textbf{Test 1} }} 
-                &\le  \PProb{\exists j \in [s] \text{ s.t. } y_j \in \Support{\Dist} }{y_1, \ldots, y_{s_1} \samples  \Uniform{\DomainSize}} \\
-        		  & \le \frac{A'}{\DomainSize}s = q_{\Accept}\,.
-        	\end{align*}
-        Equivalently, multiplying and dividing $q_{\Accept}$ by $A$, and using the fact that $1-2c = \frac{A'}{A}$ from the setting of $c$,
-        	\begin{align*}
-        		\Prob{\TesterFunc \text{ outputs } \Reject} 
-                &\geq  1 - \frac{A'}{A}\cdot \frac{A}{\DomainSize}s
-                = 1 - c\cdot\frac{A'}{A}
-                = 1 - c(1-2c) = 1-c+2c^2 = q_{\Reject}\,.
-        	\end{align*}
-    \end{description}
-    Now, using the fact that $e^{-c} \leq 1-c+c^{2}/2$
-    \[
-        1-c+2c^2  - (1+c^2)e^{-c} \geq \frac{c^2}{2}
-    \]
-    
-    which means the gap between the rejection probability in the completeness and soundness cases is at least
-    \[
-    q_{\Reject} - p_{\Reject} \geq \frac{c^2}{2} = \BigOmega{\left(\frac{A-A'}{A}\right)^2}
-    \]
-\end{proof}
-\begin{mdframed}[
-		frametitle={Test 2},
-		frametitlealignment=\centering
-	]
-	\flushleft
-	\textbf{Common Input}: Description of domain $\Domain$, integers parameters $B < B'$.\\
-
-	\textbf{Verifier Input}: $\PCond$ access to an $(1+\alpha)$-flat distribution flat distribution $\Dist \in \DistSet{\Domain}$, where $\alpha \leq \frac{3}{2}\frac{B'-B}{B}$.\\
-
-	\textbf{Prover Input}: Full description of $\Dist$.
-
-	\begin{enumerate}
-		\item Set $c\Def \frac{B'-B}{18 B'}$, $s \Def c\frac{\DomainSize}{B'}$.
-        \item \textbf{$\TesterFunc$}: Draw $\True{x} \samples \Dist$ and $(z_1, \ldots, z_{s}) \samples \Uniform{\Domain}$. Form the tuple $S \Def (\highlight{x}, z_1, \ldots, z_{s})$.
-		\item{\textbf{$\TesterFunc \rightarrow \Prover{\Dist}$}: Send the permuted tuple $S' \Def \{S_{\pi(1)}\dots, S_{\pi(s+1)}\}$, where $\pi$ is a permutation of $[s+1]$ chosen uniformly at random.}
-
-		\item{\textbf{$\TesterFunc \leftarrow \Prover{\Dist}$}: Return $\widetilde{y}\samples \{i \in [s+1]: S'_{i} \in \Support{\Dist}\}$, an index chosen uniformly at random among all those for which the corresponding element of $S'$ is in the support of $\Dist$.}
-
-		\item{If $\widetilde{y}\neq \pi(1)$ (i.e., $\widetilde{y}$ does not correspond to the index of $\True{x}$) output $\Reject$, otherwise output $\Accept$.}
-
-	\end{enumerate}
-    \captionsetup{hypcap=false} % restore default
-	\captionof{figure}{Second Proof System For Support Size Range For Distributions With Large Support}\label{alg:large-supp-size:test2}
-    \captionsetup{hypcap=true} % restore default
-\end{mdframed}
-\begin{claim}[Detecting Large Support]
-    \label{claim:test2}
-    The proof system given in~\cref{alg:large-supp-size:test2} has the following guarantees. 
-    On input access to an $(1+\alpha)$-flat distribution $\Dist$, along with an element $\True{x}\in\Support{\Dist}$ and integers $B< B' \leq \DomainSize$ such that $0\leq \alpha \leq \frac{3}{2}\frac{B'-B}{B}$, it has communication complexity $\BigO{\DomainSize/B'}$, sample complexity $1$ (and query complexity $0$), and  decides between
-    (1)~$\SupportSize{\Dist} \leq B$ and (2)~$\SupportSize{\Dist} \geq B'$
-    with completeness and soundness errors at most $p'_{\Reject}$ and $q'_{\Accept}$, explicit values such that
-    \[
-        1-q'_{\Accept} > p'_{\Reject} + \BigOmega{\left(\frac{B'-B}{B'}\right)^2\frac{B}{B'}}\,.
-    \]
-    Moreover, it has round complexity $1$.
-\end{claim}
-% \clement{Important: to work, this has a condition on the flatness. Basically, if $B < B' \leq (1+\Proximity)B$, we need $(1+\alpha)$-flatness for $0\leq \alpha \leq \frac{3}{2}\Proximity$.}
-\begin{proof}
-    The communication complexity follows from our choice of $s = \BigO{\DomainSize/B'}$, and the sample complexity from the draw of $\True{x}$ (only call to the oracle for $\Dist$).
-    
-    Turning to correctness, we first define the following three disjoint events:
-    \begin{itemize}
-        \item $\mathcal{E}_0$: none of the $s$ uniformly drawn elements $z_1,\dots z_s$ falls in the support of the distribution; that is, $|\{z_1, \ldots, z_{s}\} \cap \Support{\Dist}| = 0$.
-
-        \item $\mathcal{E}_1$: exactly one of the $s$ uniformly drawn elements $z_1,\dots z_s$ falls in the support of the distribution; that is, $|\{z_1, \ldots, z_{s}\} \cap \Support{\Dist}| = 1$.
-        \item $\mathcal{E}_{\geq 2}$: at least two of the $s$ uniformly drawn elements $z_1,\dots z_s$ falls in the support of the distribution; that is, $|\{z_1, \ldots, z_{s}\} \cap \Support{\Dist}| \geq 2$.
-    \end{itemize}
-    The intuition is that a prover (honest or not) is able to send back the index of the verifier's true sample $\True{x}$ whenever $\mathcal{E}_0$ holds; under $\mathcal{E}_1$, while a prover cannot always send the index of $\True{x}$, there is still a strategy for them to guess it (among two alternatives) with probability $\approx 1/2$. Under $\mathcal{E}_{\geq 2}$, there is not much we can say, but fortunately this is a very unlikely event in the completeness case.
-    
-    With this in hand, we analyse the completeness and soundness claims. For convenience, set
-    \[
-    \lambda \Def  \frac{B}{B'} < 1
-    \]
-    and observe that our assumption on $\alpha$ implies $\alpha \leq \frac{3}{2}\cdot \frac{1-\lambda}{\lambda}$.
-    \begin{description}
-        \item[Completeness:] Assume $\SupportSize{\Dist} \leq B$. 
-        As discussed above, if $\mathcal{E}_0$ holds then the honest prover succeeds, as it can uniquely identify $\True{x}$ in $S'$. If $\mathcal{E}_1$ holds (in which case $|S\cap \Support{\Dist}|=2$), then the honest prover can still succeed in returning the index of $\True{x}$ with probability $1/2$, by returning one of the two possible indices uniformly at random. If $\mathcal{E}_{\geq 2}$ holds, %while there is still a non-zero probability of success \textit{via} a guessing strategy, 
-        while there is still a positive probability of guessing the index of $x$ correctly, we can (conservatively) neglect it for the analysis and count $\mathcal{E}_{\geq 2}$ as a failure. This leads to the following bound for the rejection probability, where we use the fact that
-        $|\{z_1, \ldots, z_{s}\} \cap \Support{\Dist}|$ is a Binomial random variable with parameters $s$ and $\frac{|\Support{\Dist}|}{\DomainSize} \leq \frac{B}{\DomainSize}$:
-		      \begin{align*}
-			      \Prob{\TesterFunc \text{ outputs } \Reject } 
-                  &\leq  0\cdot \Prob{\mathcal{E}_0} + \frac{1}{2}\cdot\Prob{\mathcal{E}_1} + 1\cdot \Prob{\mathcal{E}_{\geq 2}}   \\
-                  &\leq  \frac{1}{2}\cdot s\frac{B}{\DomainSize}\left(1-\frac{B}{\DomainSize}\right)^{s-1} + \Prob{\mathcal{E}_{\geq 2}}   \\
-                  &=  \frac{c\lambda}{2}\left(1-\frac{c\lambda}{s}\right)^{s-1} + \Prob{\mathcal{E}_{\geq 2}}   \\
-                  &\leq  \frac{c\lambda}{2}\frac{e^{-c\lambda}}{1-\frac{c\lambda}{s}} + \binom{s}{2}\left(\frac{B}{N}\right)^2   \\
-                  &\leq  \frac{c\lambda}{2}\frac{1}{1-\frac{c\lambda}{2}} + \frac{\left(c\lambda\right)^2}{2} \\
-                  &\leq  \frac{c\lambda}{2} + \left(c\lambda\right)^2
-                  \leq  \frac{c\lambda}{2} + c^2\lambda = p'_{\Reject}\,,
-		      \end{align*}
-		      by our setting of $s= c\frac{\DomainSize}{B'}$, and crudely bounding
-              $\Prob{\mathcal{E}_{\geq 2}} \leq \binom{s}{2}\left(\frac{B}{N}\right)^2 \leq \frac{s^2}{2} \left(\frac{c\lambda}{s}\right)^2$ before concluding with $\frac{1}{1-x} \leq 1+2x$ (which holds for $x\in[0,1/2]$).
-            Importantly, we here implicitly used the fact that $\Pr[\mathcal{E}_1] = \PProb{X=1}{X\sim \operatorname{Bin}(s,p)} = sp(1-p)^{s-1}$ is non-decreasing in the Binomial parameter $p$, as $\frac{B}{\DomainSize}$ is only an upper bound on this parameter. One can check that this is true as long as $p \leq \frac{1}{s+1}$, which is satisfied for us, as, given our setting of $s$ and $c$, we have 
-            \[
-                p \leq \frac{B}{\DomainSize} \leq \frac{B}{B'}
-                \leq 9\frac{\DomainSize}{B'-B}
-                = \frac{1}{2s} \leq 
-                \frac{1}{s+1}.
-            \]
-        %\markComment{Probably inconsequential, but don't we need $B$ to not be too too close to $N$ to ensure that $\Pr[\mathcal{E}_1]$ and $\Pr[\mathcal{E}_2]$ are monotone in the Binomial parameter? (Since we only know that the Binomial parameter is at most $(B-1)/(N-1)$, not that it's equal to this.)}
-        %\clement{True. I need to check this, but my guess is $B \leq N/2$ is enough, and in any case this should not be an issue. (It should be true for all $B$ for $\mathcal{E}_{\geq 2}$, the only question is for $\mathcal{E}_1$).}\clement{Done (see above).}
-   
-        \begin{remark}
-          Note that the above analysis critically saves (almost) a factor $2$ over a naive union bound, which using the above notation would have given $\leq c\lambda$. 
-          Instead, we get (almost) $\leq \frac{c\lambda}{2}$. 
-          This is critical, as for sequential repetition, we need $p'_{\Reject} < q'_{\Reject} \approx \frac{1}{2}(1-e^{-c})$, which would have been impossible if we didn't save this factor 2, given that $\lambda\approx 1-\Proximity$ can be very close to 1 in the settings we use these protocols in.
-        \end{remark}
-        \item[Soundness:] Assume $\SupportSize{\Dist} \geq B'$. If $|S\cap \Support{\Dist}|\geq 2$ (i.e., if $\bar{\mathcal{E}}_0 = \mathcal{E}_1\cup \mathcal{E}_{\geq 2}$ holds), we claim that the prover can only return the index of $\True{x}$ (and thus make the tester accept) with probability at most $\frac{1+\alpha}{2+\alpha} = \frac{1}{2} + O(\alpha)$. %Indeed, as soon as one of the $z_i$'s belongs to $\Support{\Dist}$, %say $z\neq \True{x}$, then the best guess for $\True{x}$ for a dishonest prover (who knows that $\True{x}$ was drawn from $\Dist$) 
-        %then a dishonest prover's best guess for the index of $\True{x}$ given $S$ is the index of the element with the highest probability under $\Dist$. 
-        A dishonest prover maximizes its chance of returning the index of $\True{x}$ by choosing the index with the highest conditional probability of being $\pi(1)$ given the permuted tuple $S'$. By Bayes' rule, this conditional probability of an index is proportional to the probability mass of the corresponding element under $\Dist$. Let $z_i$ be another element in $\Support{\Dist}$. 
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        \iffalse
-        \markComment{I'm not sure that this reasoning is literally correct, since the process for sampling $x$ is different that it is for sampling the other elements. For example, suppose $x$ has smaller probability mass than $z$ (which appears in the sample and is in the support of $\mathcal{D}$), and the prover sees that $|S| < s + 1$, so there must have been a collision in $S$. Then maybe it's advantageous for it to guess $x$, since the probability of having sampled $z$ twice is higher than that of having sampled $x$ twice. This shouldn't be an actual issue since the distribution is close to flat, but I'm worried it might need slightly different reasoning...}\clement{I see what you mean. I'll try to think about it and expand on the justification, to make the claim about this ratio waterproof.}\ari{Is this still an issue if we sample $z$'s uniformly without replacement? Then the collision argument is not an issue right?} 
-        \clement{I think it's OK, actually, if we send $S$ as a permuted tuple instead of set. Will doublecheck and write it down to be sure.}
-        \clement{I think this is OK, if we send $S$ as a permuted tuple (so collisions can happen, but there is still only one good possible answer). The analysis for completeness and the rest of the soundness is the same, but we should have that (1) the best strategy for a dishonest prover to guess the (randomly drawn) $X$ is to send back the index of an element $z\in S$ that maximizes $\Pr[X = z \mid S]$, and (2) we have
-        \[
-            \Pr[X = z \mid S] = \frac{\Pr[X=s, S]}{\Pr[S]}
-            = \frac{\Dist[z]\cdot (1/(N-1))^{s-1}}{\Pr[S]}
-        \]
-        which is proportional to $\Dist[z]$ (the other terms are only a function of $S$).        }
-        \fi
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%        
-        Then since the distribution is $(1+\alpha)$-flat, the dishonest prover chooses the correct index of $x$ with probability at most
-            \[
-                \frac{\Dist[x]}{\Dist[x]+\Dist[z_i]} \leq \frac{1+\alpha}{2+\alpha}.
-            \]
-        Of course, if $|S\cap \Support{\Dist}| = 1$ (i.e., if $\mathcal{E}_0$ holds) then the prover can always identify $\True{x}$ and return the correct index. Hence, we have
-		      \begin{align*}
-			      \Prob{\TesterFunc \text{ outputs } \Accept} & = \Prob{\text{Prover guesses $\True{x}$ from $S$}}\Prob{\bar{\mathcal{E}}_0}+ 1\cdot \Prob{\mathcal{E}_0}  \\
-			      & \le \frac{1+\alpha}{2+\alpha}\Prob{\bar{\mathcal{E}}_0}+ \Prob{\mathcal{E}_0}   \\
-			    & = \frac{1+\alpha}{2+\alpha} + \frac{1}{2+\alpha} \Prob{\mathcal{E}_0}      \\
-			      & \le \frac{1+\alpha}{2+\alpha} + \frac{1}{2+\alpha}  \left(1 - \frac{B'}{\DomainSize}\right)^{s} \\
-                & \leq \frac{1+\alpha}{2+\alpha} + \frac{1}{2+\alpha}  e^{-c} = q'_{\Accept},
-		      \end{align*}
-              the last inequality from our choice of $s= c\frac{\DomainSize}{B'}$. Equivalently,
-        	\begin{align*}
-        		\Prob{\TesterFunc \text{ outputs } \Reject} 
-                &\geq  1 -  q'_{\Accept}
-                = \frac{1}{2+\alpha}\left(1-e^{-c}\right) 
-                \geq \frac{1}{2}\cdot\frac{1-e^{-c}}{1+\frac{3}{4}\cdot \frac{1-\lambda}{\lambda}} = q'_{\Reject}\, ,
-        	\end{align*}
-    \end{description}
-    where the last inequality follows by the assumption that $\alpha \leq \frac{3}{2} \cdot \frac{B' - B}{B}$.
-    Now, by our setting of $c = \frac{B'-B}{18 B'} = \frac{1-\lambda}{18}$, we have 
-        \[
-            4\frac{1-e^{-c}}{(1+4c)c} - 3 \geq 1-18c = \lambda
-        \]
-        where the first inequality follows from convexity of the function $f\colon x\mapsto 4\frac{1-e^{-x}}{(1+4x)x} - 3$ (extended at $0$ by continuity), above its tangent $x\mapsto 1-18x$ at $0$.  
-        Reorganizing and recalling the expressions of $p'_{\Reject},q'_{\Reject}$, is equivalent to
-        \[
-            q'_{\Reject} \geq p'_{\Reject} + c^2\lambda\,,
-        \]
-        concluding the proof since $c^2\lambda = \BigTheta{\left(\frac{B'-B}{B'}\right)^2\frac{B}{B'}}$.
-        
-     %   \sstext{
-      %  Let $\alpha \leq \ell \cdot \frac{B' - B}{B}$. Then, the above equations can be replaced by
- %$\frac{1}{2}\cdot\frac{1-e^{-c}}{1+\frac{\ell}{2}\cdot \frac{1-\lambda}{\lambda}} \geq \frac{c - \frac{c^2}{2}}{2}\cdot\frac{1}{1+\frac{\ell}{2}\cdot \frac{1-\lambda}{\lambda}}  = \frac{c - \frac{c^2}{2}}{2}\cdot\frac{2 \lambda}{(2-\ell)\lambda+\ell}  = \frac{c \lambda - \frac{c^2\lambda}{2}}{2}\cdot\frac{2 }{(2-\ell)\lambda+\ell} $. So I think we need some condition on $\lambda$.}
-\end{proof}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Proofs For Testing Support Size For Distributions With Small Support}
-
-The techniques described above to failed to give us sub-linear communication when dealing with distributions with small supports. 
-To deal with this case, we describe a non-interactive proof system with sublinear communication, that decides the support size decision problem.
-
-\begin{mdframed}[
-		frametitle={Small Support Size Protocol},
-		frametitlealignment=\centering
-	]
-	\textbf{Common Input}: Description of domain $\Domain$, parameters $A', A, B, B'$ where $B \le \sqrt{\DomainSize}$. Soundness parameters $\delta_{s}$ and completeness parameters $\delta_c$.\\
-	\textbf{Verifier Input}: $\PCond$ access to a $(1+\alpha)$-flat distribution $\Dist \in \DistSet{\Domain}$.\\
-	\textbf{Prover Input}: Full description of $\Dist$.\\
-	\flushleft
-	Set $s_1 = \left\lceil\frac{\log(1/\delta_{s})}{\log(A/A')}\right\rceil$,  and     
-    $s_2 = \left\lceil\frac{\log(1/\delta_{s})}{\log((1+\alpha)B'/B)}\right\rceil$
-    \newline
-
-	Prover sends a set $\Claimed{\Support{\Dist}}$ of size at most $B$ (and at least $A$), which it claims is the support of $\Dist$.
-	If the set size is outside this range, the verifier immediately outputs $\Reject$.\newline
-
-
-	\textbf{Test 1:} ``\textsc{Detect Small Support}''\newline
-
-	Sample $z_1, \ldots, z_{s_1} \iidSamples \Claimed{\Support{\Dist}}$ uniformly, and $\True{x}\samples \Dist$. Check if $z_j \in \Support{\Dist}$, for all $j \in [s_1]$, using the \nameref{alg:pcond-support-checker} algorithm with error parameter $\frac{\delta_c}{s_1}$ and reference point $\True{x}$.
-	Output $\Reject$ if \emph{any} invocation outputs reject.
-	 \newline
-
-	\textbf{Test 2:} ``\textsc{Detect Large Support}''\newline
-
-	Verifier samples  $\highlight{x_1}, \ldots, \highlight{x_{s_2}} \iidSamples \Dist$ and outputs $\Reject$ Test 2 if any of the samples are not in $\Claimed{\Support{\Dist}}$.  \newline
-
-	\textbf{Final Output}: The verifier outputs $\Accept$ if and only if it accepts both tests above.
-
-\captionsetup{hypcap=false} % restore default
-	\captionof{figure}{Proof System For Support Size Range For Distributions With Small Support}\label{alg:small-supp-size}
-    \captionsetup{hypcap=true} % restore default
-\end{mdframed}
-
-
-\begin{lemma}[Support Size Difference For Small Support Distributions]\label{lemma:supp-size-small}
-	Fix parameters for completeness error $\delta_c \in (0,1)$ and soundness error $\delta_s \in (0,1)$.
-	Let $\DomainSize \in \Naturals$ be the domain size and $\alpha \in [0,1]$.
-	Fix integer parameters $A' < A < B < B'$.
-	Given $\PCond$ access to an $(1+\alpha)$-flat distribution $\Dist \in \DistSet{\Domain}$, the an interactive proof system described in Figure~\ref{alg:small-supp-size}  decides the following promise problem with communication complexity $\BigO{B}$.
-	%\clement{$\BigOTilde{\frac{B'}{B'-B}}$ for the query complexity of InSupport}
-	\begin{align}
-		\Property_\Yes & \Def  \{ \Dist \in \DistSet{\Domain}: A \le \SupportSize{\Dist} \le B \land \Dist \text{ is  $(1+\alpha)$-flat}\}                   \\
-		\Property_\No  & \Def  \{ \Dist  \in \DistSet{\Domain}: \left(\SupportSize{\Dist} \le A' \lor \SupportSize{\Dist} \ge B'\right) \land \Dist \text{ is $(1+\alpha)$-flat}\}
-	\end{align}
-
-
-The sample complexity is $\BigO{\frac{\log (1/\delta_s)}{\log(B'/B)}}$ and the query complexity is $\BigOTilde{\frac{\log(1/\delta_s)\log(1/\delta_c)}{\log(A/A')}}$.
-%\clement{Not mentioning the $\alpha$ in the bound, since $(1+\alpha)\in[1,2]$ is just a constant factor that can be absorbed in the $\BigO{}$.}
-\end{lemma}
-
-\begin{proof}
-The communication complexity is immediate from the cost of sending the purported support $\Claimed{\Support{\Dist}}$ (of size at most $B$). The sample and query complexities are, respectively, $O(s_2)$ and $O(s_1\log\frac{s_1}{\delta_c})$ (from the $s_1$ calls to the~\nameref{alg:pcond-support-checker} with error parameter $\delta_c/s_1$); and the claimed bounds follow from our choice of $s_1,s_2$ and (for the latter) the query complexity of~\cref{lemma:isinsupport}. We now turn to correctness, arguing completeness and soundness separately.\\
-
-	\textbf{Completeness}: If the prover follows the protocol honestly, then Test 2 always passes.
-	The probability that Test 1 fails is equal to the probability that the \nameref{alg:pcond-support-checker} fails, which, due to our assumption of near flatness and our choice of $s_1$, is at most $\delta_c$ by~\cref{lemma:isinsupport}, along with a union bound over $s_1$ tests.   \\
-
-  %\ari{Swapped}
-  %  \sstext{I think the cases have been swapped below. When $Supp(D) <= A'$, but $\tilde{Supp(D)} >=A$, we have that the probability that $z_i$ is in the support is at most A'/A, and so B should be replaced with A throughout that argument. In particular, if the true support is very large $>B'$, then every uniform sample from $\tilde{Supp(D)}$ can lie in the true support, and so the below argument for Test 1 does not apply.}
-
-	\textbf{Soundness:} Suppose now that $\SupportSize{\Dist} \notin (A',B')$. We distinguish two cases, showing that \textbf{Test 1} will reject with probability at least $1-\delta_s$ if $\SupportSize{\Dist} \leq A'$, and \textbf{Test 2} will reject with probability at least $1-\delta_s$ if $\SupportSize{\Dist} \geq B'$.
-
-    \begin{itemize}
-        \item Suppose that $\SupportSize{\Dist} \leq A'$. We then have that, for each $1\leq i\leq s_1$, $\Pr[z_i \in \Support{\Dist}] \;\le\; \frac{A'}{A}$. 
-	The tester accepts Test 1 if \emph{every} $z_i \in \Claimed{\Support{\Dist}}$ is found to be the support of $\Dist$.
-	Thus, with $s_1$ independent samples,
-	\begin{align*}
-		\Prob{\TesterFunc \text{ outputs  }\Accept} 
-        &= \Prob{\forall i,\; (z_i \in \Support{\Dist} \land \text{\nameref{alg:pcond-support-checker}  returns } \Yes)} \\
-        &\leq
-        \Prob{\forall i,\; z_i \in \Support{\Dist}}
-        \leq 
-		\left(\frac{A'}{A}\right)^{s_1}\,,
-	\end{align*}
-  Which is at most $\delta_s$ by our choice of $s_1 \ge \frac{\log (1/\delta_s)}{\log (A/A')}$.
-
-	% Let $s_1 = c\,\frac{B'}{B'-B}$ and let $y \Def \frac{B'}{B} > 1$. Then
-	% \[
-	% 	\left(\frac{B}{B'}\right)^{s_1}
-	% 	= y^{-\,c\,\frac{y}{y-1}}
-	% 	= \exp\!\left(-\,c\,\frac{y}{y-1}\,\log y\right).
-	% \]
-	% Using $\log y \ge \frac{y-1}{y}$ for $y>1$ (since
-	% $f(y)=\log y-\frac{y-1}{y}$ has $f'(y)=\frac{y-1}{y^2}\ge 0$ for $y > 1$ and $f(1)=0$),
-	% we obtain
-	% \[
-	% 	\frac{y}{y-1}\,\ln y \;\ge\; 1
-	% 	\quad\implies\quad
-	% 	\left(\frac{B}{B'}\right)^{s_1} \;\le\; e^{-c}.
-	% \]
-	% Thus choosing $c \ge \ln 1/\delta_{s}$ guarantees $\Pr\!\big[\text{Test 1 accepts}\big] \;\le\; \delta_{s}$. \\
-	%
-
-  \item Suppose now that $\SupportSize{\Dist} \geq B'$. %\ari{Swapped}  \sstext{I think the cases have been swapped below. When $Supp(D) >= B'$, but $\tilde{Supp(D)} <=B$, we have that when we draw from the distribution, we are sufficiently likely to hit elements from the distribution not in the support the prover sent, which is the content of the below case. I think A needs to be swapped with B below basically.}
-    The tester accepts Test 2 if every $\highlight{x_1}, \ldots, \highlight{x_{s_2}}$ is in $\Claimed{\Support{\Dist}}$.
-	Here we are checking if that cheating prover lied by claiming that $\Size{\Claimed{\Support{\Dist}}}$ is much smaller than the true support size.
-	Intuitively, the best chance for the prover to get away with this is to use $ \Size{\Claimed{\Support{\Dist}}} = B$, when $\SupportSize{\Dist} = B'$ (as this is the smallest possible discrepancy between the cheating prover, and the correct answer), and then put the heaviest items of $\Dist$ in $\Claimed{\Support{\Dist}}$.
-	This way, when the honest verifier samples $x \samples \Dist$, they are more likely to find that $x$ is in $\Claimed{\Support{\Dist}}$.
-	The winning probability of this optimal cheating prover is maximised when the items in $\Claimed{\SupportSize{\Dist}}$ is heaviest.
-	However, as the distribution is $(1+\alpha)$-flat, there is no such thing as an outright heavy or light element.
-	This means that the provers strategy of declaring only $B$ elements as support is bound to miss out on items that are still highly likely to show up as samples. 
-
-    More formally, observe first that since $\Dist$ is $(1+\alpha)$-flat, we have, for every $x\in \Support{\Dist}$,\footnote{Indeed, $1 = \sum_{x\in \Support{\Dist}} \Dist[x] \leq \Size{\Support{\Dist}}\cdot \max_{x\in \Support{\Dist}}  \Dist[x] \leq \Size{\Support{\Dist}}\cdot (1+\alpha)\min_{x\in \Support{\Dist}}  \Dist[x]$, and similarly
-    $1 \geq \Size{\Support{\Dist}}\cdot \frac{\max_{x\in \Support{\Dist}}}{1+\alpha}  \Dist[x]$, from which 
-    \[
-    \frac{1}{(1+\alpha)\Size{\Support{\Dist}}} \leq \min_{x\in \Support{\Dist}} \Dist[x]\leq \max_{x\in \Support{\Dist}} \Dist[x] \leq \frac{1+\alpha}{\Size{\Support{\Dist}}}\,.
-    \]}
-    \[
-        \frac{1}{(1+\alpha)\Size{\Support{\Dist}}} \leq \Dist[x] \leq \frac{1+\alpha}{\Size{\Support{\Dist}}}
-    \]
-    The probability that $x\samples \Dist$ belongs to $\Claimed{\Support{\Dist}}$ is then
-    \begin{align*}
-    \PProb{x\in \Claimed{\Support{\Dist}}}{x\samples \Dist}
-    &= \Dist(\Claimed{\Support{\Dist}})
-    = \sum_{y\in \Claimed{\Support{\Dist}}\cap \Support{\Dist}} \Dist[y] \\
-    &\leq \Size{\Claimed{\Support{\Dist}}\cap \Support{\Dist}}\cdot \frac{1+\alpha}{\Size{\Support{\Dist}}} \\
-    &\leq (1+\alpha)\frac{\Size{\Claimed{\Support{\Dist}}}}{\Size{\Support{\Dist}}} \\
-    &\leq (1+\alpha)\frac{B}{B'}\,,
-    \end{align*}
-    and so the probability that all $s_2$ draws $x_1\dots,x_{s_2} \iidSamples \Dist$ fall in $\Claimed{\Support{\Dist}}$ is at most
-  \begin{align*}
-    \Prob{\TesterFunc \text{ outputs } \Accept} &= \PProb{\forall i \in [s_2], \,\, x_i \in \Claimed{\Support{\Dist}}}{x_1, \ldots, x_{s_2}\samples \Dist}\\ 
-    &\leq \left((1+\alpha)\frac{B}{B'}\right)^{s_2} \le \delta_s\,, 
-  \end{align*}
-  the last inequality from our choice of $s_2 \geq \frac{\log(1/\delta_s)}{\log((1+\alpha)B'/B)}$.
-    \bgroup
-    \iffalse
-
-	More formally, partition $\Support{\Dist} = \Claimed{\Support{\Dist}} \cup R \Def M \cup R$, such that $\Size{M} + \Size{R} = m + r = n \Def \SupportSize{\Dist}$.
-	The set $M$ contain all the heavy items and the set $R$ contain the light ones.
-	Let $q \min_{x \in \Support{\True{\Dist}}}\TrueDist{x}$.
-	The best case scenario for the cheating prover is to have $R$ be as light as possible.
-	Therefore, the $(1+\alpha)$-flat distribution that maximises the provers chances of winning, is the one where set $R$ has mass $rq$, and the set $M$ has mass $m\alpha q$.
-	This gives us
-	\begin{align}
-		rq + m \alpha q & =1 \end{align}
-    Solving for $q$, we get
-		$q = \frac{1}{r + \alpha m}$.
-    Remember $q$ is the probability of sampling any single item in $R$. 
-    Taking a union bound, the probability of a single sample landing in $R$ is $rq$.
-    Define $p$ to be the probability that a single sample is in the claimed support of heavy items. 
-    That is,
-    
-    \[p \Def \PProb{x \notin R}{x \samples \Dist} = (1 - rq) = (1 - \frac{r}{r+\alpha m}) = \frac{\alpha B}{\alpha B + (B'-B)}
-    \]
-    %\sstext{How? Shouldn't this be $rq + m(1+ \alpha) q  =1  $?}
-
-  \begin{align}
-    \Prob{\TesterFunc \text{ outputs } \Accept} &= \PProb{\forall i \in [s_2], \,\, x_i \in \Claimed{\Support{\Dist}}}{x_1, \ldots, x_{s_2}\samples \Dist}\\ &= p^{s_2} \le \delta_s 
-  \end{align}
-Re-arranging, 
-\[
-    s_2 \ge \frac{\log 1/\delta_s}{\log 1/p} \ge \frac{\log 1/\delta_s}{\log \left(1 + \frac{(B'-B)}{\alpha B}\right)}
-\]
-     \fi
-    \egroup
-     \end{itemize}
-     This concludes the proof.
-\end{proof}
 
 %%
 %% Bibliography
