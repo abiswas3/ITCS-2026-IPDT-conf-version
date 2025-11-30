@@ -33,24 +33,22 @@
 % \bibliographystyle{plainurl}% the mandatory bibstyle
 \bibliographystyle{abbrvnat}
 
-\title{Interactive Proofs For Distribution Testing With Conditional Oracles} %TODO Please add
+\title{Interactive Proofs For Distribution Testing With Conditional Oracles} %Please add   DONE:
 
-%\titlerunning{Dummy short title} %TODO optional, please use if title is longer than one line
+\author{Ari Biswas}{University Of Warwick, United Kingdom  \and \url{https://randomwalks.xyz}}{tcs@randomwalks.xyz}{https://orcid.org/0000-0001-6412-844X}{Supported by The Chancellors International Scholarship}
+%mandatory, please use full name; only 1 author per \author macro; first two parameters are mandatory, other parameters can be empty. Please provide at least the name of the affiliation and the country. The full address is optional. Use additional curly braces to indicate the correct name splitting when the last name consists of multiple name parts.   DONE:
 
-\author{Ari Biswas}{University Of Warwick, United Kingdom  \and \url{https://randomwalks.xyz}}{tcs@randomwalks.xyz}{https://orcid.org/0000-0001-6412-844X}{}
-%TODO mandatory, please use full name; only 1 author per \author macro; first two parameters are mandatory, other parameters can be empty. Please provide at least the name of the affiliation and the country. The full address is optional. Use additional curly braces to indicate the correct name splitting when the last name consists of multiple name parts.
+\author{Mark Bun}{Boston University, USA \and \url{https://cs-people.bu.edu/mbun/}}{mbun@bu.edu}{[orcid]}{[funding]}
 
-\author{Mark Bun\footnote{Optional footnote, e.g. to mark corresponding author}}{Boston University, USA \and \url{https://cs-people.bu.edu/mbun/}}{mbun@bu.edu}{[orcid]}{[funding]}
+\author{Cl\'ement L. Canonne}{University of Sydney, Australia \and \url{https://ccanonne.github.io}}{clement.canonne@sydney.edu.au}{https://orcid.org/0000-0001-7153-5211}{Supported by an ARC DECRA (DE230101329).}
 
-\author{Cl\'ement L. Canonne\footnote{Optional footnote, e.g. to mark corresponding author}}{University of Sydney, Australia \and \url{https://ccanonne.github.io}}{clement.canonne@sydney.edu.au}{0000-0001-7153-5211}{Supported by an ARC DECRA (DE230101329).}
+\author{Satchit Sivakumar}{Boston University, USA \and \url{https://sites.google.com/view/satchit/home?pli=1}}{satchit.sivakumar@gmail.com}{[orcid]}{[funding]}
 
-\author{Satchit Sivakumar\footnote{Optional footnote, e.g. to mark corresponding author}}{Boston University, USA \and \url{https://sites.google.com/view/satchit/home?pli=1}}{satchit.sivakumar@gmail.com}{[orcid]}{[funding]}
+\authorrunning{A. Biswas, M. Bun, C. Cannone, S. Sivakumar} %mandatory. First: Use abbreviated first/middle names. Second (only in severe cases): Use first author plus 'et al.'   DONE:
 
-\authorrunning{A. Biswas, M. Bun, C. Cannone, S. Sivakumar} %TODO mandatory. First: Use abbreviated first/middle names. Second (only in severe cases): Use first author plus 'et al.'
+\Copyright{Ari Biswas, Mark Bun, Cl\'ement Canonne and  Satchit Sivakumar} %mandatory, please use full first names. LIPIcs license is "CC-BY";  http://creativecommons.org/licenses/by/3.0/   DONE:
 
-\Copyright{Ari Biswas, Mark Bun, Cl\'ement Canonne and  Satchit Sivakumar} %TODO mandatory, please use full first names. LIPIcs license is "CC-BY";  http://creativecommons.org/licenses/by/3.0/
-
-% \ccsdesc[100]{\textcolor{red}{Replace ccsdesc macro with valid one}} %TODO mandatory: Please choose ACM 2012 classifications from https://dl.acm.org/ccs/ccs_flat.cfm 
+% \ccsdesc[100]{\textcolor{red}{Replace ccsdesc macro with valid one}} %mandatory: Please choose ACM 2012 classifications from https://dl.acm.org/ccs/ccs_flat.cfm    DONE:
 \begin{CCSXML}
 <ccs2012>
    <concept>
@@ -62,14 +60,17 @@
 \end{CCSXML}
 
 \ccsdesc[500]{Theory of computation~Interactive computation}
-\keywords{Distribution Testing, Interactive Proofs} %TODO mandatory; please add comma-separated list of keywords
+\keywords{Distribution Testing, Interactive Proofs} %mandatory; please add comma-separated list of keywords   DONE:
 
 \category{} %optional, e.g. invited paper
 
-% TODO: add full version
+% DONE: add full version
 \relatedversion{Full Version} %optional, e.g. full version hosted on arXiv, HAL, or other respository/website
-\relatedversiondetails[linktext={opt. text shown instead of the URL}, cite=]{Full Version}{URL to related version} %linktext and cite are optional
-
+% \relatedversiondetails[linktext={opt. text shown instead of the URL}, cite=]{Full Version}{https:://randomwalks.xyz/papers/itcs_2026_ipdp_extended_fullversion.pdf} %linktext and cite are optional
+\relatedversiondetails
+[linktext={\url{https://randomwalks.xyz/papers/itcs_2026_ipdp_fullversion.pdf}} ]
+  {URL}
+  {https://randomwalks.xyz/papers/itcs_2026_ipdp_fullversion.pdf}
 %\supplement{}%optional, e.g. related research data, source code, ... hosted on a repository like zenodo, figshare, GitHub, ...
 %\supplementdetails[linktext={opt. text shown instead of the URL}, cite=DBLP:books/mk/GrayR93, subcategory={Description, Subcategory}, swhid={Software Heritage Identifier}]{General Classification (e.g. Software, Dataset, Model, ...)}{URL to related version} %linktext, cite, and subcategory are optional
 
@@ -98,7 +99,7 @@
 
 \maketitle
 
-%TODO: mandatory: add short abstract of the document
+%mandatory: add short abstract of the document   DONE:
 \begin{abstract}
 We revisit the framework of interactive proofs for distribution testing, first introduced by Chiesa and Gur (ITCS 2018), which has recently experienced a surge in interest, accompanied by notable progress (e.g., Herman and Rothblum, STOC 2022, FOCS 2023; Herman, RANDOM~2024). 
 In this model, a data-poor verifier  determines whether a probability distribution has a property of interest by interacting with an all-powerful, data-rich but untrusted prover bent on convincing them that it has the property. While prior work gave sample-, time-, and communication-efficient protocols for testing and estimating a range of distribution properties, they all suffer from an inherent issue: for most interesting properties of distributions over a domain of size $N$, the verifier must draw at least $\Omega(\sqrt{N})$ samples of its own. While sublinear in $N$, this is still prohibitive for large domains encountered in practice.
@@ -350,7 +351,7 @@ If the prover was telling the truth (or rather did not lie egregiously), then th
 If the prover significantly lied, then the support size claim will be false and the prover will be caught. 
 We note that the final analysis needs to handle some additional subtleties, since the $\PCond$ oracle is itself only approximate and does not provide perfect comparisons (which can affect the sampling), and additionally the bucket boundaries and the neighbourhood of the provided point do not overlap precisely. 
 Once we have estimated the probability of important points, we can use the ratio learning techniques discussed earlier to certify the prover's claim about the bucket histogram of the distribution. 
-%
+We refer the reader to the full version for precise technical details. 
 
 
 \subsection{Other Related Work:}
